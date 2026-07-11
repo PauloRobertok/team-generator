@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF334FD62FD49E980000FD83 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FD52FD49E980000FD83 /* GroupDetailView.swift */; };
+		DF334FD82FD49EAF0000FD83 /* GroupDetailViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FD72FD49EAF0000FD83 /* GroupDetailViewState.swift */; };
+		DF334FDA2FD49EDF0000FD83 /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FD92FD49EDF0000FD83 /* GroupDetailViewModel.swift */; };
+		DF334FE02FD49F150000FD83 /* GroupDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FDF2FD49F150000FD83 /* GroupDetailData.swift */; };
+		DF334FE22FD49F480000FD83 /* GroupDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FE12FD49F480000FD83 /* GroupDetailViewModelProtocol.swift */; };
+		DF334FE42FD49F5E0000FD83 /* GroupDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FE32FD49F5E0000FD83 /* GroupDetailCoordinator.swift */; };
+		DF334FE82FD49F7E0000FD83 /* GroupDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FE72FD49F7E0000FD83 /* GroupDetailManager.swift */; };
+		DF334FEA2FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FE92FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift */; };
+		DF334FEC2FD49F9A0000FD83 /* GroupDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FEB2FD49F9A0000FD83 /* GroupDetailFactory.swift */; };
+		DF334FEE2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FED2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift */; };
+		DF334FF22FD4A1740000FD83 /* FloatingActionMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FEF2FD4A1740000FD83 /* FloatingActionMenuButton.swift */; };
+		DF334FF32FD4A1740000FD83 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FF02FD4A1740000FD83 /* PlayerRowView.swift */; };
+		DF334FF92FD4A2200000FD83 /* GroupDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FF72FD4A2200000FD83 /* GroupDetailRepository.swift */; };
+		DF334FFB2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FFA2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift */; };
 		DF6127572FC90EE8001A2CD9 /* GroupGameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6127492FC90EE8001A2CD9 /* GroupGameCardView.swift */; };
 		DF6127582FC90EE8001A2CD9 /* GroupGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61274A2FC90EE8001A2CD9 /* GroupGameView.swift */; };
 		DF6127592FC90EE8001A2CD9 /* GroupGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61274D2FC90EE8001A2CD9 /* GroupGame.swift */; };
@@ -51,6 +65,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF334FD52FD49E980000FD83 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
+		DF334FD72FD49EAF0000FD83 /* GroupDetailViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewState.swift; sourceTree = "<group>"; };
+		DF334FD92FD49EDF0000FD83 /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModel.swift; sourceTree = "<group>"; };
+		DF334FDF2FD49F150000FD83 /* GroupDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailData.swift; sourceTree = "<group>"; };
+		DF334FE12FD49F480000FD83 /* GroupDetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModelProtocol.swift; sourceTree = "<group>"; };
+		DF334FE32FD49F5E0000FD83 /* GroupDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailCoordinator.swift; sourceTree = "<group>"; };
+		DF334FE72FD49F7E0000FD83 /* GroupDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailManager.swift; sourceTree = "<group>"; };
+		DF334FE92FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailManagerProtocol.swift; sourceTree = "<group>"; };
+		DF334FEB2FD49F9A0000FD83 /* GroupDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailFactory.swift; sourceTree = "<group>"; };
+		DF334FED2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailFactoryProtocol.swift; sourceTree = "<group>"; };
+		DF334FEF2FD4A1740000FD83 /* FloatingActionMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionMenuButton.swift; sourceTree = "<group>"; };
+		DF334FF02FD4A1740000FD83 /* PlayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView.swift; sourceTree = "<group>"; };
+		DF334FF72FD4A2200000FD83 /* GroupDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailRepository.swift; sourceTree = "<group>"; };
+		DF334FFA2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailRepositoryProtocol.swift; sourceTree = "<group>"; };
 		DF6127492FC90EE8001A2CD9 /* GroupGameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameCardView.swift; sourceTree = "<group>"; };
 		DF61274A2FC90EE8001A2CD9 /* GroupGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameView.swift; sourceTree = "<group>"; };
 		DF61274D2FC90EE8001A2CD9 /* GroupGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGame.swift; sourceTree = "<group>"; };
@@ -118,9 +146,103 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF334FD12FD49E1F0000FD83 /* GroupDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FD42FD49E630000FD83 /* Architecture */,
+				DF334FD32FD49E440000FD83 /* ViewModel */,
+				DF334FD22FD49E3C0000FD83 /* View */,
+			);
+			path = GroupDetail;
+			sourceTree = "<group>";
+		};
+		DF334FD22FD49E3C0000FD83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FF12FD4A1740000FD83 /* Components */,
+				DF334FD52FD49E980000FD83 /* GroupDetailView.swift */,
+				DF334FD72FD49EAF0000FD83 /* GroupDetailViewState.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF334FD32FD49E440000FD83 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FD92FD49EDF0000FD83 /* GroupDetailViewModel.swift */,
+				DF334FE12FD49F480000FD83 /* GroupDetailViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DF334FD42FD49E630000FD83 /* Architecture */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FF82FD4A2200000FD83 /* Repository */,
+				DF334FDE2FD49F000000FD83 /* Model */,
+				DF334FDD2FD49EF80000FD83 /* Manager */,
+				DF334FDC2FD49EF00000FD83 /* Coordinator */,
+				DF334FDB2FD49EE80000FD83 /* Factory */,
+			);
+			path = Architecture;
+			sourceTree = "<group>";
+		};
+		DF334FDB2FD49EE80000FD83 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FEB2FD49F9A0000FD83 /* GroupDetailFactory.swift */,
+				DF334FED2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		DF334FDC2FD49EF00000FD83 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FE32FD49F5E0000FD83 /* GroupDetailCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DF334FDD2FD49EF80000FD83 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FE72FD49F7E0000FD83 /* GroupDetailManager.swift */,
+				DF334FE92FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DF334FDE2FD49F000000FD83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FDF2FD49F150000FD83 /* GroupDetailData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF334FF12FD4A1740000FD83 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FEF2FD4A1740000FD83 /* FloatingActionMenuButton.swift */,
+				DF334FF02FD4A1740000FD83 /* PlayerRowView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DF334FF82FD4A2200000FD83 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF334FF72FD4A2200000FD83 /* GroupDetailRepository.swift */,
+				DF334FFA2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		DF6127682FC913D9001A2CD9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DF334FD12FD49E1F0000FD83 /* GroupDetail */,
 				DF61276B2FC91476001A2CD9 /* Groups */,
 				DF6127692FC913F4001A2CD9 /* Players */,
 			);
@@ -434,26 +556,40 @@
 			files = (
 				DFB88A942FCBC65B004435B7 /* GroupGameFactory.swift in Sources */,
 				DFB88A842FCBC249004435B7 /* GroupGameRepository.swift in Sources */,
+				DF334FE02FD49F150000FD83 /* GroupDetailData.swift in Sources */,
 				DFB88A852FCBC249004435B7 /* GroupGameRepositoryProtocol.swift in Sources */,
+				DF334FE82FD49F7E0000FD83 /* GroupDetailManager.swift in Sources */,
 				DF61277A2FC91C98001A2CD9 /* GroupGameViewState.swift in Sources */,
 				DFB88A912FCBC642004435B7 /* GroupGameCoordinator.swift in Sources */,
 				DFB88A7F2FCBBF5E004435B7 /* GroupGame.xcdatamodeld in Sources */,
 				DFB88A982FCBC882004435B7 /* CoordinatorProtocol.swift in Sources */,
 				DF6127572FC90EE8001A2CD9 /* GroupGameCardView.swift in Sources */,
 				DF6127582FC90EE8001A2CD9 /* GroupGameView.swift in Sources */,
+				DF334FFB2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift in Sources */,
+				DF334FEC2FD49F9A0000FD83 /* GroupDetailFactory.swift in Sources */,
+				DF334FDA2FD49EDF0000FD83 /* GroupDetailViewModel.swift in Sources */,
 				DF6127592FC90EE8001A2CD9 /* GroupGame.swift in Sources */,
 				DF6127762FC91693001A2CD9 /* GroupGameHeaderView.swift in Sources */,
 				DFB88A962FCBC7BC004435B7 /* GroupGameFactoryProtocol.swift in Sources */,
 				DF61275A2FC90EE8001A2CD9 /* Player.swift in Sources */,
 				DF61275B2FC90EE8001A2CD9 /* Team.swift in Sources */,
+				DF334FE22FD49F480000FD83 /* GroupDetailViewModelProtocol.swift in Sources */,
 				DFB88A892FCBC276004435B7 /* GroupGameEntity+Mapping.swift in Sources */,
 				DFB88A8A2FCBC276004435B7 /* PersistenceController.swift in Sources */,
 				DFB88A8E2FCBC34D004435B7 /* SportType.swift in Sources */,
+				DF334FEE2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift in Sources */,
+				DF334FD82FD49EAF0000FD83 /* GroupDetailViewState.swift in Sources */,
 				DF61275C2FC90EE8001A2CD9 /* GroupGameManager.swift in Sources */,
+				DF334FF22FD4A1740000FD83 /* FloatingActionMenuButton.swift in Sources */,
+				DF334FF32FD4A1740000FD83 /* PlayerRowView.swift in Sources */,
 				DF61275D2FC90EE8001A2CD9 /* GroupGameViewModel.swift in Sources */,
+				DF334FD62FD49E980000FD83 /* GroupDetailView.swift in Sources */,
 				DF61277C2FC91CAF001A2CD9 /* GroupGameViewModelProtocol.swift in Sources */,
 				DFB88A8C2FCBC294004435B7 /* RepositoryError.swift in Sources */,
 				DF61275F2FC90EE8001A2CD9 /* teamgeneratorApp.swift in Sources */,
+				DF334FE42FD49F5E0000FD83 /* GroupDetailCoordinator.swift in Sources */,
+				DF334FF92FD4A2200000FD83 /* GroupDetailRepository.swift in Sources */,
+				DF334FEA2FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
