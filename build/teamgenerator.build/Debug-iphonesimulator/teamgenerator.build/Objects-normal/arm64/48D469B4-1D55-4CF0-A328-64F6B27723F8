@@ -1,8 +1,0 @@
-{
-  "" : {
-    "pch" : "/Users/ravinavarro/Documents/MyProjects/teamGenerator/build/teamgenerator.build/Debug-iphonesimulator/teamgenerator.build/Objects-normal/arm64/teamgenerator-primary-Bridging-header.pch"
-  },
-  "/Users/ravinavarro/Documents/MyProjects/teamGenerator/ContentView.swift" : {
-    "object" : "/Users/ravinavarro/Documents/MyProjects/teamGenerator/build/teamgenerator.build/Debug-iphonesimulator/teamgenerator.build/Objects-normal/arm64/ContentView.__XCPREVIEW_THUNKSUFFIX__.preview-thunk.o"
-  }
-}

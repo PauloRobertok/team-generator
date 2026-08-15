@@ -6,15 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct teamgeneratorApp: App {
-    
-    private let gameCoordinator = GroupGameCoordinator()
-    
     var body: some Scene {
         WindowGroup {
-            gameCoordinator.show()
+            GroupsView()
         }
+        .modelContainer(for: [GroupGame.self, Player.self])
     }
 }

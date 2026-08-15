@@ -7,44 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF334FD62FD49E980000FD83 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FD52FD49E980000FD83 /* GroupDetailView.swift */; };
-		DF334FD82FD49EAF0000FD83 /* GroupDetailViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FD72FD49EAF0000FD83 /* GroupDetailViewState.swift */; };
-		DF334FDA2FD49EDF0000FD83 /* GroupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FD92FD49EDF0000FD83 /* GroupDetailViewModel.swift */; };
-		DF334FE02FD49F150000FD83 /* GroupDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FDF2FD49F150000FD83 /* GroupDetailData.swift */; };
-		DF334FE22FD49F480000FD83 /* GroupDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FE12FD49F480000FD83 /* GroupDetailViewModelProtocol.swift */; };
-		DF334FE42FD49F5E0000FD83 /* GroupDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FE32FD49F5E0000FD83 /* GroupDetailCoordinator.swift */; };
-		DF334FE82FD49F7E0000FD83 /* GroupDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FE72FD49F7E0000FD83 /* GroupDetailManager.swift */; };
-		DF334FEA2FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FE92FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift */; };
-		DF334FEC2FD49F9A0000FD83 /* GroupDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FEB2FD49F9A0000FD83 /* GroupDetailFactory.swift */; };
-		DF334FEE2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FED2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift */; };
-		DF334FF22FD4A1740000FD83 /* FloatingActionMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FEF2FD4A1740000FD83 /* FloatingActionMenuButton.swift */; };
-		DF334FF32FD4A1740000FD83 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FF02FD4A1740000FD83 /* PlayerRowView.swift */; };
-		DF334FF92FD4A2200000FD83 /* GroupDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FF72FD4A2200000FD83 /* GroupDetailRepository.swift */; };
-		DF334FFB2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334FFA2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift */; };
-		DF6127572FC90EE8001A2CD9 /* GroupGameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6127492FC90EE8001A2CD9 /* GroupGameCardView.swift */; };
-		DF6127582FC90EE8001A2CD9 /* GroupGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61274A2FC90EE8001A2CD9 /* GroupGameView.swift */; };
-		DF6127592FC90EE8001A2CD9 /* GroupGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61274D2FC90EE8001A2CD9 /* GroupGame.swift */; };
-		DF61275A2FC90EE8001A2CD9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61274E2FC90EE8001A2CD9 /* Player.swift */; };
-		DF61275B2FC90EE8001A2CD9 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61274F2FC90EE8001A2CD9 /* Team.swift */; };
-		DF61275C2FC90EE8001A2CD9 /* GroupGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6127512FC90EE8001A2CD9 /* GroupGameManager.swift */; };
-		DF61275D2FC90EE8001A2CD9 /* GroupGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6127522FC90EE8001A2CD9 /* GroupGameViewModel.swift */; };
 		DF61275F2FC90EE8001A2CD9 /* teamgeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6127562FC90EE8001A2CD9 /* teamgeneratorApp.swift */; };
 		DF6127602FC90EE8001A2CD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6127542FC90EE8001A2CD9 /* Assets.xcassets */; };
-		DF6127762FC91693001A2CD9 /* GroupGameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6127752FC91693001A2CD9 /* GroupGameHeaderView.swift */; };
 		DF6127782FC918A2001A2CD9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6127772FC918A2001A2CD9 /* Colors.xcassets */; };
-		DF61277A2FC91C98001A2CD9 /* GroupGameViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6127792FC91C98001A2CD9 /* GroupGameViewState.swift */; };
-		DF61277C2FC91CAF001A2CD9 /* GroupGameViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61277B2FC91CAF001A2CD9 /* GroupGameViewModelProtocol.swift */; };
-		DFB88A7F2FCBBF5E004435B7 /* GroupGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A7D2FCBBF5E004435B7 /* GroupGame.xcdatamodeld */; };
-		DFB88A842FCBC249004435B7 /* GroupGameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A812FCBC249004435B7 /* GroupGameRepository.swift */; };
-		DFB88A852FCBC249004435B7 /* GroupGameRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A822FCBC249004435B7 /* GroupGameRepositoryProtocol.swift */; };
-		DFB88A892FCBC276004435B7 /* GroupGameEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A862FCBC276004435B7 /* GroupGameEntity+Mapping.swift */; };
-		DFB88A8A2FCBC276004435B7 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A872FCBC276004435B7 /* PersistenceController.swift */; };
-		DFB88A8C2FCBC294004435B7 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A8B2FCBC294004435B7 /* RepositoryError.swift */; };
-		DFB88A8E2FCBC34D004435B7 /* SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A8D2FCBC34D004435B7 /* SportType.swift */; };
-		DFB88A912FCBC642004435B7 /* GroupGameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A902FCBC642004435B7 /* GroupGameCoordinator.swift */; };
-		DFB88A942FCBC65B004435B7 /* GroupGameFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A932FCBC65B004435B7 /* GroupGameFactory.swift */; };
-		DFB88A962FCBC7BC004435B7 /* GroupGameFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A952FCBC7BC004435B7 /* GroupGameFactoryProtocol.swift */; };
-		DFB88A982FCBC882004435B7 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB88A972FCBC882004435B7 /* CoordinatorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,50 +30,45 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DF334FD52FD49E980000FD83 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
-		DF334FD72FD49EAF0000FD83 /* GroupDetailViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewState.swift; sourceTree = "<group>"; };
-		DF334FD92FD49EDF0000FD83 /* GroupDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModel.swift; sourceTree = "<group>"; };
-		DF334FDF2FD49F150000FD83 /* GroupDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailData.swift; sourceTree = "<group>"; };
-		DF334FE12FD49F480000FD83 /* GroupDetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewModelProtocol.swift; sourceTree = "<group>"; };
-		DF334FE32FD49F5E0000FD83 /* GroupDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailCoordinator.swift; sourceTree = "<group>"; };
-		DF334FE72FD49F7E0000FD83 /* GroupDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailManager.swift; sourceTree = "<group>"; };
-		DF334FE92FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailManagerProtocol.swift; sourceTree = "<group>"; };
-		DF334FEB2FD49F9A0000FD83 /* GroupDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailFactory.swift; sourceTree = "<group>"; };
-		DF334FED2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailFactoryProtocol.swift; sourceTree = "<group>"; };
-		DF334FEF2FD4A1740000FD83 /* FloatingActionMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionMenuButton.swift; sourceTree = "<group>"; };
-		DF334FF02FD4A1740000FD83 /* PlayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView.swift; sourceTree = "<group>"; };
-		DF334FF72FD4A2200000FD83 /* GroupDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailRepository.swift; sourceTree = "<group>"; };
-		DF334FFA2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailRepositoryProtocol.swift; sourceTree = "<group>"; };
-		DF6127492FC90EE8001A2CD9 /* GroupGameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameCardView.swift; sourceTree = "<group>"; };
-		DF61274A2FC90EE8001A2CD9 /* GroupGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameView.swift; sourceTree = "<group>"; };
-		DF61274D2FC90EE8001A2CD9 /* GroupGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGame.swift; sourceTree = "<group>"; };
-		DF61274E2FC90EE8001A2CD9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		DF61274F2FC90EE8001A2CD9 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		DF6127512FC90EE8001A2CD9 /* GroupGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameManager.swift; sourceTree = "<group>"; };
-		DF6127522FC90EE8001A2CD9 /* GroupGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameViewModel.swift; sourceTree = "<group>"; };
 		DF6127542FC90EE8001A2CD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF6127562FC90EE8001A2CD9 /* teamgeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamgeneratorApp.swift; sourceTree = "<group>"; };
-		DF6127752FC91693001A2CD9 /* GroupGameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameHeaderView.swift; sourceTree = "<group>"; };
 		DF6127772FC918A2001A2CD9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		DF6127792FC91C98001A2CD9 /* GroupGameViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameViewState.swift; sourceTree = "<group>"; };
-		DF61277B2FC91CAF001A2CD9 /* GroupGameViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameViewModelProtocol.swift; sourceTree = "<group>"; };
-		DFB88A7E2FCBBF5E004435B7 /* GroupGame.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupGame.xcdatamodel; sourceTree = "<group>"; };
-		DFB88A812FCBC249004435B7 /* GroupGameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameRepository.swift; sourceTree = "<group>"; };
-		DFB88A822FCBC249004435B7 /* GroupGameRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameRepositoryProtocol.swift; sourceTree = "<group>"; };
-		DFB88A862FCBC276004435B7 /* GroupGameEntity+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupGameEntity+Mapping.swift"; sourceTree = "<group>"; };
-		DFB88A872FCBC276004435B7 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
-		DFB88A8B2FCBC294004435B7 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
-		DFB88A8D2FCBC34D004435B7 /* SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportType.swift; sourceTree = "<group>"; };
-		DFB88A902FCBC642004435B7 /* GroupGameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameCoordinator.swift; sourceTree = "<group>"; };
-		DFB88A932FCBC65B004435B7 /* GroupGameFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameFactory.swift; sourceTree = "<group>"; };
-		DFB88A952FCBC7BC004435B7 /* GroupGameFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupGameFactoryProtocol.swift; sourceTree = "<group>"; };
-		DFB88A972FCBC882004435B7 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		FE7E33B12FAB95EA0063F699 /* teamgenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamgenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7E33BE2FAB95ED0063F699 /* teamgeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = teamgeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7E33C82FAB95ED0063F699 /* teamgeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = teamgeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		27EF4485A5BBC748384B48F1 /* GroupDetail */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GroupDetail;
+			sourceTree = "<group>";
+		};
+		2C824418AC5A6FC3AE8543A4 /* Persistence */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TeamGenerator;
+			sourceTree = "<group>";
+		};
+		5DDA4EB5BE4B578E47FF3BC9 /* Components */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Components;
+			sourceTree = "<group>";
+		};
+		81E14CE7B8D19CE2E377208A /* Groups */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		FAE44D95BD42893D9992F046 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = teamgeneratorTests;
@@ -122,21 +82,21 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FE7E33AE2FAB95EA0063F699 /* Frameworks */ = {
+		18A54ADD86BDAD0AFF33D3F8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FE7E33BB2FAB95ED0063F699 /* Frameworks */ = {
+		79A44F84B1E3F5F9CB31002B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FE7E33C52FAB95ED0063F699 /* Frameworks */ = {
+		DC294DD6B6C805835B099341 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -146,195 +106,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DF334FD12FD49E1F0000FD83 /* GroupDetail */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FD42FD49E630000FD83 /* Architecture */,
-				DF334FD32FD49E440000FD83 /* ViewModel */,
-				DF334FD22FD49E3C0000FD83 /* View */,
-			);
-			path = GroupDetail;
-			sourceTree = "<group>";
-		};
-		DF334FD22FD49E3C0000FD83 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FF12FD4A1740000FD83 /* Components */,
-				DF334FD52FD49E980000FD83 /* GroupDetailView.swift */,
-				DF334FD72FD49EAF0000FD83 /* GroupDetailViewState.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		DF334FD32FD49E440000FD83 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FD92FD49EDF0000FD83 /* GroupDetailViewModel.swift */,
-				DF334FE12FD49F480000FD83 /* GroupDetailViewModelProtocol.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		DF334FD42FD49E630000FD83 /* Architecture */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FF82FD4A2200000FD83 /* Repository */,
-				DF334FDE2FD49F000000FD83 /* Model */,
-				DF334FDD2FD49EF80000FD83 /* Manager */,
-				DF334FDC2FD49EF00000FD83 /* Coordinator */,
-				DF334FDB2FD49EE80000FD83 /* Factory */,
-			);
-			path = Architecture;
-			sourceTree = "<group>";
-		};
-		DF334FDB2FD49EE80000FD83 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FEB2FD49F9A0000FD83 /* GroupDetailFactory.swift */,
-				DF334FED2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift */,
-			);
-			path = Factory;
-			sourceTree = "<group>";
-		};
-		DF334FDC2FD49EF00000FD83 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FE32FD49F5E0000FD83 /* GroupDetailCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		DF334FDD2FD49EF80000FD83 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FE72FD49F7E0000FD83 /* GroupDetailManager.swift */,
-				DF334FE92FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		DF334FDE2FD49F000000FD83 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FDF2FD49F150000FD83 /* GroupDetailData.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		DF334FF12FD4A1740000FD83 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FEF2FD4A1740000FD83 /* FloatingActionMenuButton.swift */,
-				DF334FF02FD4A1740000FD83 /* PlayerRowView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		DF334FF82FD4A2200000FD83 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FF72FD4A2200000FD83 /* GroupDetailRepository.swift */,
-				DF334FFA2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		DF6127682FC913D9001A2CD9 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				DF334FD12FD49E1F0000FD83 /* GroupDetail */,
-				DF61276B2FC91476001A2CD9 /* Groups */,
-				DF6127692FC913F4001A2CD9 /* Players */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
-		DF6127692FC913F4001A2CD9 /* Players */ = {
-			isa = PBXGroup;
-			children = (
-				DF61276A2FC91439001A2CD9 /* PlayerCell */,
-			);
-			path = Players;
-			sourceTree = "<group>";
-		};
-		DF61276A2FC91439001A2CD9 /* PlayerCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PlayerCell;
-			sourceTree = "<group>";
-		};
-		DF61276B2FC91476001A2CD9 /* Groups */ = {
-			isa = PBXGroup;
-			children = (
-				DF6127712FC91584001A2CD9 /* Architecture */,
-				DF6127702FC914D5001A2CD9 /* ViewModel */,
-				DF61276C2FC91489001A2CD9 /* View */,
-			);
-			path = Groups;
-			sourceTree = "<group>";
-		};
-		DF61276C2FC91489001A2CD9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DF61276D2FC91490001A2CD9 /* SubViews */,
-				DF61274A2FC90EE8001A2CD9 /* GroupGameView.swift */,
-				DF6127792FC91C98001A2CD9 /* GroupGameViewState.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		DF61276D2FC91490001A2CD9 /* SubViews */ = {
-			isa = PBXGroup;
-			children = (
-				DF6127492FC90EE8001A2CD9 /* GroupGameCardView.swift */,
-				DF6127752FC91693001A2CD9 /* GroupGameHeaderView.swift */,
-			);
-			path = SubViews;
-			sourceTree = "<group>";
-		};
-		DF61276E2FC914A4001A2CD9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DFB88A8D2FCBC34D004435B7 /* SportType.swift */,
-				DF61274F2FC90EE8001A2CD9 /* Team.swift */,
-				DF61274E2FC90EE8001A2CD9 /* Player.swift */,
-				DF61274D2FC90EE8001A2CD9 /* GroupGame.swift */,
-				DFB88A7D2FCBBF5E004435B7 /* GroupGame.xcdatamodeld */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		DF61276F2FC914B7001A2CD9 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				DF6127512FC90EE8001A2CD9 /* GroupGameManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		DF6127702FC914D5001A2CD9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				DF6127522FC90EE8001A2CD9 /* GroupGameViewModel.swift */,
-				DF61277B2FC91CAF001A2CD9 /* GroupGameViewModelProtocol.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		DF6127712FC91584001A2CD9 /* Architecture */ = {
-			isa = PBXGroup;
-			children = (
-				DFB88A922FCBC649004435B7 /* Factory */,
-				DFB88A8F2FCBC62F004435B7 /* Coordinator */,
-				DFB88A882FCBC276004435B7 /* CoreData */,
-				DFB88A832FCBC249004435B7 /* Repository */,
-				DF61276E2FC914A4001A2CD9 /* Model */,
-				DF61276F2FC914B7001A2CD9 /* Manager */,
-			);
-			path = Architecture;
-			sourceTree = "<group>";
-		};
 		DF6127722FC915C3001A2CD9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,52 +123,20 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		DFB88A832FCBC249004435B7 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				DFB88A812FCBC249004435B7 /* GroupGameRepository.swift */,
-				DFB88A822FCBC249004435B7 /* GroupGameRepositoryProtocol.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		DFB88A882FCBC276004435B7 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				DFB88A862FCBC276004435B7 /* GroupGameEntity+Mapping.swift */,
-				DFB88A872FCBC276004435B7 /* PersistenceController.swift */,
-				DFB88A8B2FCBC294004435B7 /* RepositoryError.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		DFB88A8F2FCBC62F004435B7 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				DFB88A902FCBC642004435B7 /* GroupGameCoordinator.swift */,
-				DFB88A972FCBC882004435B7 /* CoordinatorProtocol.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		DFB88A922FCBC649004435B7 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				DFB88A932FCBC65B004435B7 /* GroupGameFactory.swift */,
-				DFB88A952FCBC7BC004435B7 /* GroupGameFactoryProtocol.swift */,
-			);
-			path = Factory;
-			sourceTree = "<group>";
-		};
 		FE7E33A82FAB95EA0063F699 = {
 			isa = PBXGroup;
 			children = (
 				DF6127732FC915D5001A2CD9 /* App */,
 				DF6127722FC915C3001A2CD9 /* Resources */,
-				DF6127682FC913D9001A2CD9 /* Scenes */,
+				FE7E33B22FAB95EA0063F699 /* Products */,
 				FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */,
 				FE7E33CB2FAB95ED0063F699 /* teamgeneratorUITests */,
-				FE7E33B22FAB95EA0063F699 /* Products */,
+				FAE44D95BD42893D9992F046 /* Models */,
+				2C824418AC5A6FC3AE8543A4 /* Persistence */,
+				81E14CE7B8D19CE2E377208A /* Groups */,
+				27EF4485A5BBC748384B48F1 /* GroupDetail */,
+				3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */,
+				5DDA4EB5BE4B578E47FF3BC9 /* Components */,
 			);
 			sourceTree = "<group>";
 		};
@@ -419,12 +158,20 @@
 			buildConfigurationList = FE7E33D22FAB95ED0063F699 /* Build configuration list for PBXNativeTarget "teamgenerator" */;
 			buildPhases = (
 				FE7E33AD2FAB95EA0063F699 /* Sources */,
-				FE7E33AE2FAB95EA0063F699 /* Frameworks */,
+				DC294DD6B6C805835B099341 /* Frameworks */,
 				FE7E33AF2FAB95EA0063F699 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				27EF4485A5BBC748384B48F1 /* GroupDetail */,
+				2C824418AC5A6FC3AE8543A4 /* Persistence */,
+				3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */,
+				5DDA4EB5BE4B578E47FF3BC9 /* Components */,
+				81E14CE7B8D19CE2E377208A /* Groups */,
+				FAE44D95BD42893D9992F046 /* Models */,
 			);
 			name = teamgenerator;
 			packageProductDependencies = (
@@ -437,9 +184,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE7E33D52FAB95ED0063F699 /* Build configuration list for PBXNativeTarget "teamgeneratorTests" */;
 			buildPhases = (
-				FE7E33BA2FAB95ED0063F699 /* Sources */,
-				FE7E33BB2FAB95ED0063F699 /* Frameworks */,
-				FE7E33BC2FAB95ED0063F699 /* Resources */,
+				44DD4F6BA2070C41BCF68D33 /* Sources */,
+				79A44F84B1E3F5F9CB31002B /* Frameworks */,
+				EAAF4F99A19D4947B297931B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -460,9 +207,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE7E33D82FAB95ED0063F699 /* Build configuration list for PBXNativeTarget "teamgeneratorUITests" */;
 			buildPhases = (
-				FE7E33C42FAB95ED0063F699 /* Sources */,
-				FE7E33C52FAB95ED0063F699 /* Frameworks */,
-				FE7E33C62FAB95ED0063F699 /* Resources */,
+				89504DFFAC129AAE7A7948ED /* Sources */,
+				18A54ADD86BDAD0AFF33D3F8 /* Frameworks */,
+				57B44650B65C3F34C23D29F0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -524,6 +271,20 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		57B44650B65C3F34C23D29F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAAF4F99A19D4947B297931B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE7E33AF2FAB95EA0063F699 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,77 +294,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FE7E33BC2FAB95ED0063F699 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FE7E33C62FAB95ED0063F699 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		44DD4F6BA2070C41BCF68D33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89504DFFAC129AAE7A7948ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE7E33AD2FAB95EA0063F699 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFB88A942FCBC65B004435B7 /* GroupGameFactory.swift in Sources */,
-				DFB88A842FCBC249004435B7 /* GroupGameRepository.swift in Sources */,
-				DF334FE02FD49F150000FD83 /* GroupDetailData.swift in Sources */,
-				DFB88A852FCBC249004435B7 /* GroupGameRepositoryProtocol.swift in Sources */,
-				DF334FE82FD49F7E0000FD83 /* GroupDetailManager.swift in Sources */,
-				DF61277A2FC91C98001A2CD9 /* GroupGameViewState.swift in Sources */,
-				DFB88A912FCBC642004435B7 /* GroupGameCoordinator.swift in Sources */,
-				DFB88A7F2FCBBF5E004435B7 /* GroupGame.xcdatamodeld in Sources */,
-				DFB88A982FCBC882004435B7 /* CoordinatorProtocol.swift in Sources */,
-				DF6127572FC90EE8001A2CD9 /* GroupGameCardView.swift in Sources */,
-				DF6127582FC90EE8001A2CD9 /* GroupGameView.swift in Sources */,
-				DF334FFB2FD4A2300000FD83 /* GroupDetailRepositoryProtocol.swift in Sources */,
-				DF334FEC2FD49F9A0000FD83 /* GroupDetailFactory.swift in Sources */,
-				DF334FDA2FD49EDF0000FD83 /* GroupDetailViewModel.swift in Sources */,
-				DF6127592FC90EE8001A2CD9 /* GroupGame.swift in Sources */,
-				DF6127762FC91693001A2CD9 /* GroupGameHeaderView.swift in Sources */,
-				DFB88A962FCBC7BC004435B7 /* GroupGameFactoryProtocol.swift in Sources */,
-				DF61275A2FC90EE8001A2CD9 /* Player.swift in Sources */,
-				DF61275B2FC90EE8001A2CD9 /* Team.swift in Sources */,
-				DF334FE22FD49F480000FD83 /* GroupDetailViewModelProtocol.swift in Sources */,
-				DFB88A892FCBC276004435B7 /* GroupGameEntity+Mapping.swift in Sources */,
-				DFB88A8A2FCBC276004435B7 /* PersistenceController.swift in Sources */,
-				DFB88A8E2FCBC34D004435B7 /* SportType.swift in Sources */,
-				DF334FEE2FD49FA80000FD83 /* GroupDetailFactoryProtocol.swift in Sources */,
-				DF334FD82FD49EAF0000FD83 /* GroupDetailViewState.swift in Sources */,
-				DF61275C2FC90EE8001A2CD9 /* GroupGameManager.swift in Sources */,
-				DF334FF22FD4A1740000FD83 /* FloatingActionMenuButton.swift in Sources */,
-				DF334FF32FD4A1740000FD83 /* PlayerRowView.swift in Sources */,
-				DF61275D2FC90EE8001A2CD9 /* GroupGameViewModel.swift in Sources */,
-				DF334FD62FD49E980000FD83 /* GroupDetailView.swift in Sources */,
-				DF61277C2FC91CAF001A2CD9 /* GroupGameViewModelProtocol.swift in Sources */,
-				DFB88A8C2FCBC294004435B7 /* RepositoryError.swift in Sources */,
 				DF61275F2FC90EE8001A2CD9 /* teamgeneratorApp.swift in Sources */,
-				DF334FE42FD49F5E0000FD83 /* GroupDetailCoordinator.swift in Sources */,
-				DF334FF92FD4A2200000FD83 /* GroupDetailRepository.swift in Sources */,
-				DF334FEA2FD49F8A0000FD83 /* GroupDetailManagerProtocol.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FE7E33BA2FAB95ED0063F699 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FE7E33C42FAB95ED0063F699 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,7 +461,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BUILD_DIR = "$(SRCROOT)/build";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2ANN3WL84D;
@@ -782,7 +493,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BUILD_DIR = "$(SRCROOT)/build";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2ANN3WL84D;
@@ -934,19 +644,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		DFB88A7D2FCBBF5E004435B7 /* GroupGame.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DFB88A7E2FCBBF5E004435B7 /* GroupGame.xcdatamodel */,
-			);
-			currentVersion = DFB88A7E2FCBBF5E004435B7 /* GroupGame.xcdatamodel */;
-			path = GroupGame.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = FE7E33A92FAB95EA0063F699 /* Project object */;
 }
