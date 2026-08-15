@@ -12,7 +12,7 @@ import SwiftData
 struct teamgeneratorApp: App {
     var body: some Scene {
         WindowGroup {
-            GroupsView()
+            RootTabView()
         }
         .modelContainer(for: [GroupGame.self, Player.self])
     }

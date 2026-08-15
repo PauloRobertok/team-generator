@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF61275F2FC90EE8001A2CD9 /* teamgeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6127562FC90EE8001A2CD9 /* teamgeneratorApp.swift */; };
 		DF6127602FC90EE8001A2CD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6127542FC90EE8001A2CD9 /* Assets.xcassets */; };
 		DF6127782FC918A2001A2CD9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6127772FC918A2001A2CD9 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		DF6127542FC90EE8001A2CD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DF6127562FC90EE8001A2CD9 /* teamgeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teamgeneratorApp.swift; sourceTree = "<group>"; };
 		DF6127772FC918A2001A2CD9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FE7E33B12FAB95EA0063F699 /* teamgenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamgenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7E33BE2FAB95ED0063F699 /* teamgeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = teamgeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,46 +37,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		27EF4485A5BBC748384B48F1 /* GroupDetail */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GroupDetail;
-			sourceTree = "<group>";
-		};
-		2C824418AC5A6FC3AE8543A4 /* Persistence */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Persistence;
-			sourceTree = "<group>";
-		};
-		3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TeamGenerator;
-			sourceTree = "<group>";
-		};
-		5DDA4EB5BE4B578E47FF3BC9 /* Components */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Components;
-			sourceTree = "<group>";
-		};
-		81E14CE7B8D19CE2E377208A /* Groups */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Groups;
-			sourceTree = "<group>";
-		};
-		FAE44D95BD42893D9992F046 /* Models */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Models;
-			sourceTree = "<group>";
-		};
-		FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = teamgeneratorTests;
-			sourceTree = "<group>";
-		};
-		FE7E33CB2FAB95ED0063F699 /* teamgeneratorUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = teamgeneratorUITests;
-			sourceTree = "<group>";
-		};
+		27EF4485A5BBC748384B48F1 /* GroupDetail */ = {isa = PBXFileSystemSynchronizedRootGroup; path = GroupDetail; sourceTree = "<group>"; };
+		2C824418AC5A6FC3AE8543A4 /* Persistence */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Persistence; sourceTree = "<group>"; };
+		3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */ = {isa = PBXFileSystemSynchronizedRootGroup; path = TeamGenerator; sourceTree = "<group>"; };
+		5DDA4EB5BE4B578E47FF3BC9 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Components; sourceTree = "<group>"; };
+		61024164939B63A3E239F9CF /* Profile */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Profile; sourceTree = "<group>"; };
+		81E14CE7B8D19CE2E377208A /* Groups */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Groups; sourceTree = "<group>"; };
+		E8EE4A93947E67F6C8E09065 /* App */ = {isa = PBXFileSystemSynchronizedRootGroup; path = App; sourceTree = "<group>"; };
+		F6A843FF95819AD6BBA7D943 /* History */ = {isa = PBXFileSystemSynchronizedRootGroup; path = History; sourceTree = "<group>"; };
+		FAE44D95BD42893D9992F046 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Models; sourceTree = "<group>"; };
+		FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = teamgeneratorTests; sourceTree = "<group>"; };
+		FE7E33CB2FAB95ED0063F699 /* teamgeneratorUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = teamgeneratorUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,18 +84,9 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		DF6127732FC915D5001A2CD9 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				DF6127562FC90EE8001A2CD9 /* teamgeneratorApp.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		FE7E33A82FAB95EA0063F699 = {
 			isa = PBXGroup;
 			children = (
-				DF6127732FC915D5001A2CD9 /* App */,
 				DF6127722FC915C3001A2CD9 /* Resources */,
 				FE7E33B22FAB95EA0063F699 /* Products */,
 				FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */,
@@ -137,6 +97,9 @@
 				27EF4485A5BBC748384B48F1 /* GroupDetail */,
 				3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */,
 				5DDA4EB5BE4B578E47FF3BC9 /* Components */,
+				E8EE4A93947E67F6C8E09065 /* App */,
+				F6A843FF95819AD6BBA7D943 /* History */,
+				61024164939B63A3E239F9CF /* Profile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +135,9 @@
 				5DDA4EB5BE4B578E47FF3BC9 /* Components */,
 				81E14CE7B8D19CE2E377208A /* Groups */,
 				FAE44D95BD42893D9992F046 /* Models */,
+				E8EE4A93947E67F6C8E09065 /* App */,
+				F6A843FF95819AD6BBA7D943 /* History */,
+				61024164939B63A3E239F9CF /* Profile */,
 			);
 			name = teamgenerator;
 			packageProductDependencies = (
@@ -315,7 +281,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF61275F2FC90EE8001A2CD9 /* teamgeneratorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
