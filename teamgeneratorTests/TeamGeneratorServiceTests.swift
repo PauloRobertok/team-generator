@@ -92,4 +92,40 @@ struct TeamGeneratorServiceTests {
         #expect(result.teams[1].femaleCount == 2)
         #expect(result.insufficientWomen == false)
     }
+
+    @Test func refinesBalanceForUnevenGroupSizes() {
+        // 7 pessoas em 3 times cai numa divisão 3-2-2 — o cenário que expunha o viés
+        // do zig-zag antigo (o time que sobrava sempre acabava com o skill mais baixo).
+        let players = [
+            Player(name: "P1", gender: .female, skillLevel: .pro),
+            Player(name: "P2", gender: .female, skillLevel: .pro),
+            Player(name: "P3", gender: .female, skillLevel: .expert),
+            Player(name: "P4", gender: .female, skillLevel: .expert),
+            Player(name: "P5", gender: .female, skillLevel: .advanced),
+            Player(name: "P6", gender: .female, skillLevel: .beginner),
+            Player(name: "P7", gender: .female, skillLevel: .beginner)
+        ]
+        let result = TeamGeneratorService.generateTeams(from: players, numberOfTeams: 3, minWomenPerTeam: 3)
+
+        let averages = result.teams.map { $0.averageSkill }
+        let gap = (averages.max() ?? 0) - (averages.min() ?? 0)
+        #expect(gap <= 1.0)
+    }
+
+    @Test func refinementNeverBreaksTheWomenMinimum() {
+        let players = [
+            Player(name: "F1", gender: .female, skillLevel: .pro),
+            Player(name: "F2", gender: .female, skillLevel: .beginner),
+            Player(name: "M1", gender: .male, skillLevel: .pro),
+            Player(name: "M2", gender: .male, skillLevel: .pro),
+            Player(name: "M3", gender: .male, skillLevel: .beginner),
+            Player(name: "M4", gender: .male, skillLevel: .beginner)
+        ]
+        let result = TeamGeneratorService.generateTeams(from: players, numberOfTeams: 2, minWomenPerTeam: 1)
+
+        // O refinamento por troca só pode trocar jogadoras por jogadoras (mesmo gênero),
+        // então a regra de mínimo continua valendo mesmo depois de otimizar o skill.
+        #expect(result.teams[0].femaleCount == 1)
+        #expect(result.teams[1].femaleCount == 1)
+    }
 }
