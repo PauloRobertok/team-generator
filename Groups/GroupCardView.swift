@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GroupCardView: View {
     let group: GroupGame
+    var onEdit: (() -> Void)? = nil
+    var onDelete: (() -> Void)? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -30,8 +32,34 @@ struct GroupCardView: View {
                         .foregroundColor(.gray)
                 }
                 Spacer()
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.gray)
+
+                if onEdit != nil || onDelete != nil {
+                    Menu {
+                        if let onEdit {
+                            Button {
+                                onEdit()
+                            } label: {
+                                Label("Editar", systemImage: "pencil")
+                            }
+                        }
+                        if let onDelete {
+                            Button(role: .destructive) {
+                                onDelete()
+                            } label: {
+                                Label("Excluir", systemImage: "trash")
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.gray)
+                            .frame(width: 32, height: 32)
+                            .contentShape(Rectangle())
+                    }
+                } else {
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray)
+                }
             }
             .padding(.bottom, 10)
 

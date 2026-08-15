@@ -37,17 +37,61 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		27EF4485A5BBC748384B48F1 /* GroupDetail */ = {isa = PBXFileSystemSynchronizedRootGroup; path = GroupDetail; sourceTree = "<group>"; };
-		2C824418AC5A6FC3AE8543A4 /* Persistence */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Persistence; sourceTree = "<group>"; };
-		3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */ = {isa = PBXFileSystemSynchronizedRootGroup; path = TeamGenerator; sourceTree = "<group>"; };
-		5DDA4EB5BE4B578E47FF3BC9 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Components; sourceTree = "<group>"; };
-		61024164939B63A3E239F9CF /* Profile */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Profile; sourceTree = "<group>"; };
-		81E14CE7B8D19CE2E377208A /* Groups */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Groups; sourceTree = "<group>"; };
-		E8EE4A93947E67F6C8E09065 /* App */ = {isa = PBXFileSystemSynchronizedRootGroup; path = App; sourceTree = "<group>"; };
-		F6A843FF95819AD6BBA7D943 /* History */ = {isa = PBXFileSystemSynchronizedRootGroup; path = History; sourceTree = "<group>"; };
-		FAE44D95BD42893D9992F046 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Models; sourceTree = "<group>"; };
-		FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = teamgeneratorTests; sourceTree = "<group>"; };
-		FE7E33CB2FAB95ED0063F699 /* teamgeneratorUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = teamgeneratorUITests; sourceTree = "<group>"; };
+		27EF4485A5BBC748384B48F1 /* GroupDetail */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GroupDetail;
+			sourceTree = "<group>";
+		};
+		2C824418AC5A6FC3AE8543A4 /* Persistence */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TeamGenerator;
+			sourceTree = "<group>";
+		};
+		5DDA4EB5BE4B578E47FF3BC9 /* Components */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Components;
+			sourceTree = "<group>";
+		};
+		61024164939B63A3E239F9CF /* Profile */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		81E14CE7B8D19CE2E377208A /* Groups */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		E8EE4A93947E67F6C8E09065 /* App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = App;
+			sourceTree = "<group>";
+		};
+		F6A843FF95819AD6BBA7D943 /* History */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = History;
+			sourceTree = "<group>";
+		};
+		FAE44D95BD42893D9992F046 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = teamgeneratorTests;
+			sourceTree = "<group>";
+		};
+		FE7E33CB2FAB95ED0063F699 /* teamgeneratorUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = teamgeneratorUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,11 +177,11 @@
 				2C824418AC5A6FC3AE8543A4 /* Persistence */,
 				3DF44B2A9C7674E8E6DE8874 /* TeamGenerator */,
 				5DDA4EB5BE4B578E47FF3BC9 /* Components */,
+				61024164939B63A3E239F9CF /* Profile */,
 				81E14CE7B8D19CE2E377208A /* Groups */,
-				FAE44D95BD42893D9992F046 /* Models */,
 				E8EE4A93947E67F6C8E09065 /* App */,
 				F6A843FF95819AD6BBA7D943 /* History */,
-				61024164939B63A3E239F9CF /* Profile */,
+				FAE44D95BD42893D9992F046 /* Models */,
 			);
 			name = teamgenerator;
 			packageProductDependencies = (

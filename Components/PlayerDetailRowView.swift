@@ -12,16 +12,16 @@ struct PlayerDetailRowView: View {
     let onEdit: () -> Void
     let onDelete: () -> Void
 
+    private var isSelectedBinding: Binding<Bool> {
+        Binding(
+            get: { player.isSelected },
+            set: { player.isSelected = $0 }
+        )
+    }
+
     var body: some View {
         HStack(spacing: 12) {
-            Circle()
-                .fill(Color.gray.opacity(0.3))
-                .frame(width: 48, height: 48)
-                .overlay(
-                    Image(systemName: "person.fill")
-                        .font(.system(size: 20))
-                        .foregroundColor(.gray)
-                )
+            PlayerAvatarView(player: player)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(player.name)
@@ -52,6 +52,9 @@ struct PlayerDetailRowView: View {
                         .foregroundColor(.blue)
                         .frame(width: 32, height: 32)
                 }
+
+                Toggle("", isOn: isSelectedBinding)
+                    .labelsHidden()
             }
         }
         .padding(12)

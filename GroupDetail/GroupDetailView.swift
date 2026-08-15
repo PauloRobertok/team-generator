@@ -18,6 +18,11 @@ struct GroupDetailView: View {
     @State private var showingAddPlayer = false
     @State private var showingGenerateSheet = false
     @State private var showingTeamsResult = false
+    @State private var showingSettings = false
+
+    private var selectedCount: Int {
+        group.players.filter { $0.isSelected }.count
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -46,7 +51,7 @@ struct GroupDetailView: View {
                 .cornerRadius(12)
             }
             .padding()
-            .disabled(group.players.isEmpty)
+            .disabled(selectedCount == 0)
         }
         .overlay(alignment: .bottomTrailing) {
             FloatingActionButton(buttonSize: 60) {
@@ -82,6 +87,13 @@ struct GroupDetailView: View {
                 TeamsResultView(teams: viewModel.generatedTeams, insufficientWomen: viewModel.insufficientWomen)
             }
         }
+        .sheet(isPresented: $showingSettings) {
+            GroupSettingsView(group: group) {
+                modelContext.delete(group)
+                showingSettings = false
+                dismiss()
+            }
+        }
     }
 
     // MARK: - Header
@@ -111,7 +123,11 @@ struct GroupDetailView: View {
 
             Spacer()
 
-            Color.clear.frame(width: 16, height: 16)
+            Button(action: { showingSettings = true }) {
+                Image(systemName: "gearshape.fill")
+                    .font(.system(size: 16))
+                    .foregroundColor(.blue)
+            }
         }
         .padding()
         .background(Color(.systemBackground))
@@ -142,6 +158,9 @@ struct GroupDetailView: View {
                         .font(.system(size: 14))
                         .foregroundColor(.gray)
                     Spacer()
+                    Text("\(selectedCount) confirmados hoje")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundColor(.blue)
                 }
                 .padding(.horizontal)
                 .padding(.top)
@@ -228,10 +247,15 @@ struct GroupDetailView: View {
                         get: { viewModel?.numberOfTeams ?? 2 },
                         set: { viewModel?.numberOfTeams = $0 }
                     ),
-                    in: 2...max(2, group.players.count)
+                    in: 2...max(2, selectedCount)
                 )
-                Text("Mínimo de mulheres por time: \(group.minWomenPerTeam)")
-                    .foregroundColor(.gray)
+                if group.minWomenPerTeam > 0 {
+                    Text("Mínimo de mulheres por time: \(group.minWomenPerTeam)")
+                        .foregroundColor(.gray)
+                } else {
+                    Text("Sem regra de mínimo de mulheres — sorteio só por habilidade")
+                        .foregroundColor(.gray)
+                }
             }
             .navigationTitle("Gerar Times")
             .navigationBarTitleDisplayMode(.inline)
@@ -245,6 +269,7 @@ struct GroupDetailView: View {
                         showingGenerateSheet = false
                         showingTeamsResult = true
                     }
+                    .disabled(selectedCount == 0)
                 }
             }
         }

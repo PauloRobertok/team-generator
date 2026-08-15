@@ -57,4 +57,39 @@ struct TeamGeneratorServiceTests {
         let counts = result.teams.map { $0.players.count }
         #expect(counts == [2, 2])
     }
+
+    @Test func ignoresGenderWhenNoMinimumIsSet() {
+        let players = [
+            Player(name: "F1", gender: .female, skillLevel: .pro),
+            Player(name: "M1", gender: .male, skillLevel: .pro),
+            Player(name: "F2", gender: .female, skillLevel: .beginner),
+            Player(name: "M2", gender: .male, skillLevel: .beginner)
+        ]
+        let result = TeamGeneratorService.generateTeams(from: players, numberOfTeams: 2, minWomenPerTeam: 0)
+
+        let counts = result.teams.map { $0.players.count }
+        #expect(counts == [2, 2])
+        // Um .pro e um .beginner por time, independente do gênero.
+        #expect(result.teams[0].averageSkill == result.teams[1].averageSkill)
+    }
+
+    @Test func mixesLeftoverWomenWithMenInRemainderPool() {
+        let players = [
+            Player(name: "F1", gender: .female, skillLevel: .pro),
+            Player(name: "F2", gender: .female, skillLevel: .pro),
+            Player(name: "F3", gender: .female, skillLevel: .pro),
+            Player(name: "F4", gender: .female, skillLevel: .pro),
+            Player(name: "M1", gender: .male, skillLevel: .beginner),
+            Player(name: "M2", gender: .male, skillLevel: .beginner)
+        ]
+        // minWomenPerTeam = 1: só 1 mulher por time é reservada (2 no total);
+        // as outras 2 mulheres entram no pool misto junto com os homens.
+        let result = TeamGeneratorService.generateTeams(from: players, numberOfTeams: 2, minWomenPerTeam: 1)
+
+        let counts = result.teams.map { $0.players.count }
+        #expect(counts == [3, 3])
+        #expect(result.teams[0].femaleCount == 2)
+        #expect(result.teams[1].femaleCount == 2)
+        #expect(result.insufficientWomen == false)
+    }
 }

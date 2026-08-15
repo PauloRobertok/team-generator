@@ -15,6 +15,7 @@ final class Player {
     var genderRaw: String = Gender.male.rawValue
     var skillLevelRaw: Int = SkillLevel.beginner.rawValue
     var isSelected: Bool = true
+    var avatarIndex: Int = 0
 
     var group: GroupGame?
 
@@ -34,5 +35,6 @@ final class Player {
         self.genderRaw = gender.rawValue
         self.skillLevelRaw = skillLevel.rawValue
         self.isSelected = isSelected
+        self.avatarIndex = Int.random(in: 0..<4)
     }
 }

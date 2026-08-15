@@ -15,6 +15,8 @@ struct GroupsView: View {
     @State private var showingCreateSheet = false
     @State private var newGroupName = ""
     @State private var selectedSport: SportType = .volleyball
+    @State private var editingGroup: GroupGame?
+    @State private var groupPendingDeletion: GroupGame?
 
     private var viewModel: GroupsViewModel { GroupsViewModel(modelContext: modelContext) }
 
@@ -37,16 +39,13 @@ struct GroupsView: View {
                         } else {
                             ForEach(groups) { group in
                                 NavigationLink(value: group) {
-                                    GroupCardView(group: group)
+                                    GroupCardView(
+                                        group: group,
+                                        onEdit: { editingGroup = group },
+                                        onDelete: { groupPendingDeletion = group }
+                                    )
                                 }
                                 .buttonStyle(.plain)
-                                .contextMenu {
-                                    Button(role: .destructive) {
-                                        viewModel.deleteGroup(group)
-                                    } label: {
-                                        Label("Excluir", systemImage: "trash")
-                                    }
-                                }
                             }
                             .padding(.horizontal)
                         }
@@ -61,6 +60,31 @@ struct GroupsView: View {
         }
         .sheet(isPresented: $showingCreateSheet) {
             createGroupSheet
+        }
+        .sheet(item: $editingGroup) { group in
+            GroupSettingsView(group: group) {
+                viewModel.deleteGroup(group)
+                editingGroup = nil
+            }
+        }
+        .confirmationDialog(
+            "Excluir \"\(groupPendingDeletion?.name ?? "")\"?",
+            isPresented: Binding(
+                get: { groupPendingDeletion != nil },
+                set: { if !$0 { groupPendingDeletion = nil } }
+            ),
+            titleVisibility: .visible
+        ) {
+            Button("Excluir Grupo", role: .destructive) {
+                if let group = groupPendingDeletion {
+                    viewModel.deleteGroup(group)
+                }
+                groupPendingDeletion = nil
+            }
+        } message: {
+            if let group = groupPendingDeletion {
+                Text("Isso vai excluir também os \(group.players.count) jogadores cadastrados nesse grupo. Essa ação não pode ser desfeita.")
+            }
         }
     }
 
