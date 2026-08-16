@@ -128,4 +128,32 @@ struct TeamGeneratorServiceTests {
         #expect(result.teams[0].femaleCount == 1)
         #expect(result.teams[1].femaleCount == 1)
     }
+
+    @Test func repeatedDrawsVaryAmongTiedPlayers() {
+        // Times por skill: várias pessoas empatadas no mesmo nível. Se o sorteio fosse
+        // determinístico (bug relatado), as 30 rodadas dariam sempre o mesmíssimo arranjo.
+        let players = [
+            Player(name: "P1", gender: .female, skillLevel: .advanced),
+            Player(name: "P2", gender: .female, skillLevel: .advanced),
+            Player(name: "P3", gender: .female, skillLevel: .advanced),
+            Player(name: "P4", gender: .male, skillLevel: .advanced),
+            Player(name: "P5", gender: .male, skillLevel: .advanced),
+            Player(name: "P6", gender: .male, skillLevel: .advanced),
+            Player(name: "P7", gender: .male, skillLevel: .intermediate),
+            Player(name: "P8", gender: .male, skillLevel: .intermediate),
+            Player(name: "P9", gender: .male, skillLevel: .intermediate),
+            Player(name: "P10", gender: .male, skillLevel: .intermediate),
+            Player(name: "P11", gender: .male, skillLevel: .intermediate),
+            Player(name: "P12", gender: .male, skillLevel: .intermediate)
+        ]
+
+        let signatures: Set<String> = Set((0..<30).map { _ in
+            let result = TeamGeneratorService.generateTeams(from: players, numberOfTeams: 3, minWomenPerTeam: 1)
+            return result.teams
+                .map { $0.players.map(\.name).sorted().joined(separator: ",") }
+                .joined(separator: "|")
+        })
+
+        #expect(signatures.count > 1)
+    }
 }

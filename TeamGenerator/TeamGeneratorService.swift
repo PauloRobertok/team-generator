@@ -25,6 +25,11 @@ enum TeamGeneratorService {
     /// abordagem aqui é gulosa (sempre manda o próximo jogador pro time mais carente) e
     /// depois roda um refinamento local trocando pares de jogadores entre o time mais
     /// forte e o mais fraco sempre que isso reduzir a diferença.
+    ///
+    /// Sempre que o algoritmo encontra mais de uma opção igualmente boa (times empatados
+    /// em carência, trocas empatadas em quanto melhoram o equilíbrio), sorteia entre elas
+    /// em vez de sempre pegar a primeira — senão a mesma entrada gera sempre exatamente o
+    /// mesmo resultado, o que não parece um sorteio de verdade.
     static func generateTeams(
         from players: [Player],
         numberOfTeams: Int,
@@ -41,6 +46,7 @@ enum TeamGeneratorService {
         if minWomenPerTeam > 0 {
             let females = selectedPlayers
                 .filter { $0.gender == .female }
+                .shuffled()
                 .sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
             let males = selectedPlayers.filter { $0.gender == .male }
 
@@ -50,12 +56,14 @@ enum TeamGeneratorService {
 
             greedyDistribute(reservedWomen, into: &teams)
 
-            let remainderPool = (remainingWomen + males).sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
+            let remainderPool = (remainingWomen + males)
+                .shuffled()
+                .sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
             greedyDistribute(remainderPool, into: &teams)
 
             mustRespectGender = true
         } else {
-            let pool = selectedPlayers.sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
+            let pool = selectedPlayers.shuffled().sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
             greedyDistribute(pool, into: &teams)
             mustRespectGender = false
         }
@@ -70,29 +78,28 @@ enum TeamGeneratorService {
     /// Distribui `pool` (já ordenado por prioridade) entre os `teams`: a cada jogador,
     /// escolhe o time com menos jogadores até agora (e, empatado, o de menor soma de
     /// skill) — assim quem "sobra" quando a divisão não é exata vai justamente pro time
-    /// mais carente, não pro mesmo time sempre.
+    /// mais carente, não pro mesmo time sempre. Quando mais de um time empata em carência,
+    /// sorteia entre os empatados.
     private static func greedyDistribute(_ pool: [Player], into teams: inout [Team]) {
         guard !pool.isEmpty, !teams.isEmpty else { return }
 
         for player in pool {
-            let targetIndex = teams.indices.min { lhs, rhs in
-                let lhsCount = teams[lhs].players.count
-                let rhsCount = teams[rhs].players.count
-                if lhsCount != rhsCount { return lhsCount < rhsCount }
+            let sums = teams.map { $0.players.reduce(0) { $0 + $1.skillLevel.rawValue } }
+            let minCount = teams.map(\.players.count).min()!
+            let candidates = teams.indices.filter { teams[$0].players.count == minCount }
+            let minSum = candidates.map { sums[$0] }.min()!
+            let tiedCandidates = candidates.filter { sums[$0] == minSum }
 
-                let lhsSum = teams[lhs].players.reduce(0) { $0 + $1.skillLevel.rawValue }
-                let rhsSum = teams[rhs].players.reduce(0) { $0 + $1.skillLevel.rawValue }
-                return lhsSum < rhsSum
-            }!
-
+            let targetIndex = tiedCandidates.randomElement()!
             teams[targetIndex].players.append(player)
         }
     }
 
     /// Refinamento local: enquanto existir uma troca de um jogador do time de skill médio
     /// mais alto por um do time mais baixo (mesmo gênero, se `respectGender`) que reduza a
-    /// diferença entre os dois, aplica a melhor troca encontrada. Repete até não achar mais
-    /// nenhuma que ajude, ou até o limite de iterações.
+    /// diferença entre os dois, aplica uma das melhores trocas encontradas (sorteando entre
+    /// as empatadas). Repete até não achar mais nenhuma que ajude, ou até o limite de
+    /// iterações.
     private static func refineBalance(_ teams: inout [Team], respectGender: Bool, maxIterations: Int = 200) {
         guard teams.count > 1 else { return }
 
@@ -106,7 +113,8 @@ enum TeamGeneratorService {
             let currentGap = teams[highIndex].averageSkill - teams[lowIndex].averageSkill
             guard currentGap > 0.01 else { break }
 
-            var bestSwap: (highPlayerIndex: Int, lowPlayerIndex: Int, resultingGap: Double)?
+            var candidateSwaps: [(highPlayerIndex: Int, lowPlayerIndex: Int, resultingGap: Double)] = []
+            var bestGap = currentGap
 
             for (hi, highPlayer) in teams[highIndex].players.enumerated() {
                 for (li, lowPlayer) in teams[lowIndex].players.enumerated() {
@@ -119,13 +127,18 @@ enum TeamGeneratorService {
                     trialLow.players[li] = highPlayer
 
                     let resultingGap = abs(trialHigh.averageSkill - trialLow.averageSkill)
-                    if resultingGap < currentGap - 0.001, (bestSwap == nil || resultingGap < bestSwap!.resultingGap) {
-                        bestSwap = (hi, li, resultingGap)
+                    guard resultingGap < currentGap - 0.001 else { continue }
+
+                    if resultingGap < bestGap - 0.001 {
+                        bestGap = resultingGap
+                        candidateSwaps = [(hi, li, resultingGap)]
+                    } else if resultingGap < bestGap + 0.001 {
+                        candidateSwaps.append((hi, li, resultingGap))
                     }
                 }
             }
 
-            guard let swap = bestSwap else { break }
+            guard let swap = candidateSwaps.randomElement() else { break }
 
             let highPlayer = teams[highIndex].players[swap.highPlayerIndex]
             let lowPlayer = teams[lowIndex].players[swap.lowPlayerIndex]
