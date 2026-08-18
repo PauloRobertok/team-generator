@@ -13,6 +13,12 @@ struct TeamGenerationResult {
 }
 
 enum TeamGeneratorService {
+    /// Nomes cosméticos sorteados pros badges dos times — puramente visual, sem efeito no
+    /// balanceamento.
+    private static let badgeNames = [
+        "Power Hitters", "Net Guards", "Ace Squad", "Block Party",
+        "Spike Force", "Rally Kings", "Set Masters", "Court Crushers"
+    ]
     /// Distribui jogadores selecionados em `numberOfTeams` times, equilibrando por skill.
     ///
     /// Se `minWomenPerTeam == 0`, gênero é ignorado e todos os jogadores entram juntos
@@ -69,6 +75,7 @@ enum TeamGeneratorService {
         }
 
         refineBalance(&teams, respectGender: mustRespectGender)
+        assignBadgeNames(&teams)
 
         let femaleCount = selectedPlayers.filter { $0.gender == .female }.count
         let insufficientWomen = minWomenPerTeam > 0 && femaleCount < numberOfTeams * minWomenPerTeam
@@ -92,6 +99,13 @@ enum TeamGeneratorService {
 
             let targetIndex = tiedCandidates.randomElement()!
             teams[targetIndex].players.append(player)
+        }
+    }
+
+    private static func assignBadgeNames(_ teams: inout [Team]) {
+        let shuffled = badgeNames.shuffled()
+        for index in teams.indices {
+            teams[index].badgeName = shuffled[index % shuffled.count]
         }
     }
 

@@ -30,6 +30,26 @@ enum SkillLevel: Int, Codable, CaseIterable {
     }
 }
 
+enum PlayerPosition: String, Codable, CaseIterable {
+    case setter = "Setter"
+    case libero = "Libero"
+    case spiker = "Spiker"
+    case blocker = "Blocker"
+    case server = "Server"
+    case utility = "Utility"
+
+    var label: String {
+        switch self {
+        case .setter:  return "Levantador"
+        case .libero:  return "Líbero"
+        case .spiker:  return "Ponteiro"
+        case .blocker: return "Bloqueador"
+        case .server:  return "Sacador"
+        case .utility: return "Universal"
+        }
+    }
+}
+
 enum SportType: String, Codable, CaseIterable {
     case volleyball = "Volleyball"
     case futsal     = "Futsal"

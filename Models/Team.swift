@@ -13,6 +13,7 @@ struct Team: Identifiable {
     var id: UUID = UUID()
     var name: String
     var players: [Player]
+    var badgeName: String = ""
 
     var averageSkill: Double {
         guard !players.isEmpty else { return 0 }
@@ -22,5 +23,10 @@ struct Team: Identifiable {
 
     var femaleCount: Int {
         players.filter { $0.gender == .female }.count
+    }
+
+    /// Jogador de maior skill do time — exibido com estrela de capitão.
+    var captain: Player? {
+        players.max { $0.skillLevel.rawValue < $1.skillLevel.rawValue }
     }
 }

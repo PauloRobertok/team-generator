@@ -6,64 +6,131 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TeamsResultView: View {
-    let teams: [Team]
-    let insufficientWomen: Bool
+    let group: GroupGame
+    let viewModel: GroupDetailViewModel
 
     @Environment(\.dismiss) private var dismiss
 
+    private var teams: [Team] { viewModel.generatedTeams }
+
+    private var shareText: String {
+        var lines = ["\(group.name) — Times Gerados"]
+        for team in teams {
+            lines.append("\n\(team.name) (\(team.badgeName))")
+            for player in team.players {
+                lines.append("• \(player.name) — \(player.position.label)")
+            }
+        }
+        return lines.joined(separator: "\n")
+    }
+
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    if insufficientWomen {
-                        Label("Não há mulheres suficientes para atingir o mínimo por time", systemImage: "exclamationmark.triangle.fill")
-                            .font(.footnote)
-                            .foregroundColor(.orange)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.orange.opacity(0.12))
-                            .cornerRadius(12)
-                            .padding(.horizontal)
-                    }
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(spacing: 16) {
+                        banner
 
-                    ForEach(teams) { team in
-                        teamCard(team)
+                        ForEach(teams) { team in
+                            teamCard(team)
+                        }
                     }
+                    .padding(.vertical, 16)
                 }
-                .padding(.vertical)
+
+                footerButtons
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("Times Gerados")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Fechar") { dismiss() }
                 }
             }
         }
     }
 
-    private func teamCard(_ team: Team) -> some View {
+    // MARK: - Banner
+
+    private var banner: some View {
         VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text(team.name)
-                    .font(.headline)
+            Text("🎉 Times Balanceados!")
+                .font(.system(size: 18, weight: .bold))
+                .foregroundColor(.white)
+
+            Text("\(group.sport.label) • \(group.name)")
+                .font(.system(size: 14))
+                .foregroundColor(.white.opacity(0.9))
+
+            if group.minWomenPerTeam > 0 {
+                ruleBadge
+            }
+        }
+        .padding(20)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            ZStack(alignment: .trailing) {
+                LinearGradient(colors: [.blue, .blue.opacity(0.8)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                Image(systemName: group.sport.icon)
+                    .font(.system(size: 90))
+                    .foregroundColor(.white.opacity(0.12))
+                    .padding(.trailing, -10)
+            }
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .padding(.horizontal)
+    }
+
+    private var ruleBadge: some View {
+        HStack(spacing: 6) {
+            Image(systemName: viewModel.insufficientWomen ? "exclamationmark.triangle.fill" : "checkmark.circle.fill")
+                .font(.system(size: 12))
+            Text(
+                viewModel.insufficientWomen
+                    ? "Mulheres insuficientes pra atingir o mínimo por time"
+                    : "Regra atendida: mín. \(group.minWomenPerTeam) mulher(es) por time"
+            )
+            .font(.system(size: 12, weight: .medium))
+        }
+        .foregroundColor(.white)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .background(Color.white.opacity(0.2))
+        .clipShape(Capsule())
+    }
+
+    // MARK: - Team card
+
+    private func teamCard(_ team: Team) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(team.name)
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundColor(.blue)
+                    Text(String(format: "Skill médio: %.1f", team.averageSkill))
+                        .font(.system(size: 12))
+                        .foregroundColor(.gray)
+                }
                 Spacer()
-                Text(String(format: "Skill médio: %.1f", team.averageSkill))
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                Text(team.badgeName)
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(.blue)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(Color.blue.opacity(0.12))
+                    .clipShape(Capsule())
             }
 
-            ForEach(team.players) { player in
-                HStack {
-                    Image(systemName: player.gender == .female ? "person.fill" : "person")
-                        .foregroundColor(player.gender == .female ? .pink : .blue)
-                    Text(player.name)
-                    Spacer()
-                    Text(player.skillLevel.label)
-                        .font(.caption)
-                        .foregroundColor(.gray)
+            Divider()
+
+            VStack(spacing: 10) {
+                ForEach(team.players) { player in
+                    playerRow(player, isCaptain: player.id == team.captain?.id)
                 }
             }
         }
@@ -71,24 +138,84 @@ struct TeamsResultView: View {
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color(.systemBackground))
-                .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.06), radius: 8, x: 0, y: 4)
+                .shadow(color: Color.black.opacity(0.06), radius: 8, x: 0, y: 4)
         )
         .padding(.horizontal)
+    }
+
+    private func playerRow(_ player: Player, isCaptain: Bool) -> some View {
+        HStack(spacing: 12) {
+            PlayerAvatarView(player: player, size: 40)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(player.name)
+                    .font(.system(size: 15, weight: .semibold))
+                Text("\(player.position.label) • Skill \(player.skillLevel.rawValue)")
+                    .font(.system(size: 12))
+                    .foregroundColor(.gray)
+            }
+
+            Spacer()
+
+            if isCaptain {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 14))
+                    .foregroundColor(.blue)
+            }
+        }
+    }
+
+    // MARK: - Footer
+
+    private var footerButtons: some View {
+        HStack(spacing: 12) {
+            ShareLink(item: shareText) {
+                HStack {
+                    Image(systemName: "square.and.arrow.up")
+                    Text("Compartilhar Times")
+                }
+                .font(.system(size: 15, weight: .semibold))
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(12)
+            }
+
+            Button {
+                viewModel.generateTeams(for: group)
+            } label: {
+                HStack {
+                    Image(systemName: "arrow.clockwise")
+                    Text("Sortear")
+                }
+                .font(.system(size: 15, weight: .semibold))
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.gray.opacity(0.15))
+                .foregroundColor(.primary)
+                .cornerRadius(12)
+            }
+        }
+        .padding()
+        .background(Color(.systemBackground))
     }
 }
 
 #Preview {
-    TeamsResultView(
-        teams: [
-            Team(name: "Time 1", players: [
-                Player(name: "Mike", gender: .male, skillLevel: .pro),
-                Player(name: "Sarah", gender: .female, skillLevel: .advanced)
-            ]),
-            Team(name: "Time 2", players: [
-                Player(name: "David", gender: .male, skillLevel: .intermediate),
-                Player(name: "Elena", gender: .female, skillLevel: .advanced)
-            ])
-        ],
-        insufficientWomen: true
+    let group = GroupGame(
+        name: "Wednesday Night League",
+        sport: .volleyball,
+        minWomenPerTeam: 1,
+        players: [
+            Player(name: "Alex M.", gender: .male, skillLevel: .expert, position: .setter),
+            Player(name: "Sarah L.", gender: .female, skillLevel: .pro, position: .libero),
+            Player(name: "Mike S.", gender: .male, skillLevel: .pro, position: .spiker)
+        ]
     )
+    let viewModel = GroupDetailViewModel(modelContext: PreviewContainer.sample.mainContext)
+    viewModel.numberOfTeams = 2
+    viewModel.generateTeams(for: group)
+
+    return TeamsResultView(group: group, viewModel: viewModel)
 }

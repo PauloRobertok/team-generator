@@ -14,6 +14,7 @@ final class Player {
     var name: String = ""
     var genderRaw: String = Gender.male.rawValue
     var skillLevelRaw: Int = SkillLevel.beginner.rawValue
+    var positionRaw: String = PlayerPosition.utility.rawValue
     var isSelected: Bool = true
     var avatarIndex: Int = 0
 
@@ -29,11 +30,17 @@ final class Player {
         set { skillLevelRaw = newValue.rawValue }
     }
 
-    init(name: String, gender: Gender, skillLevel: SkillLevel, isSelected: Bool = true) {
+    var position: PlayerPosition {
+        get { PlayerPosition(rawValue: positionRaw) ?? .utility }
+        set { positionRaw = newValue.rawValue }
+    }
+
+    init(name: String, gender: Gender, skillLevel: SkillLevel, position: PlayerPosition = .utility, isSelected: Bool = true) {
         self.id = UUID()
         self.name = name
         self.genderRaw = gender.rawValue
         self.skillLevelRaw = skillLevel.rawValue
+        self.positionRaw = position.rawValue
         self.isSelected = isSelected
         self.avatarIndex = Int.random(in: 0..<4)
     }

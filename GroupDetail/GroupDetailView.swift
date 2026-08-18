@@ -37,6 +37,7 @@ struct GroupDetailView: View {
             Spacer()
 
             Button {
+                viewModel?.clampNumberOfTeams(selectedCount: selectedCount)
                 showingGenerateSheet = true
             } label: {
                 HStack {
@@ -51,7 +52,7 @@ struct GroupDetailView: View {
                 .cornerRadius(12)
             }
             .padding()
-            .disabled(selectedCount == 0)
+            .disabled(selectedCount < 2)
         }
         .overlay(alignment: .bottomTrailing) {
             FloatingActionButton(buttonSize: 60) {
@@ -84,7 +85,7 @@ struct GroupDetailView: View {
         }
         .sheet(isPresented: $showingTeamsResult) {
             if let viewModel {
-                TeamsResultView(teams: viewModel.generatedTeams, insufficientWomen: viewModel.insufficientWomen)
+                TeamsResultView(group: group, viewModel: viewModel)
             }
         }
         .sheet(isPresented: $showingSettings) {
@@ -184,6 +185,7 @@ struct GroupDetailView: View {
     @State private var newPlayerName = ""
     @State private var newPlayerGender: Gender = .male
     @State private var newPlayerSkill: SkillLevel = .beginner
+    @State private var newPlayerPosition: PlayerPosition = .utility
 
     private var addPlayerSheet: some View {
         NavigationStack {
@@ -207,6 +209,13 @@ struct GroupDetailView: View {
                     .pickerStyle(.inline)
                     .labelsHidden()
                 }
+                Section("Posição") {
+                    Picker("Posição", selection: $newPlayerPosition) {
+                        ForEach(PlayerPosition.allCases, id: \.self) { position in
+                            Text(position.label).tag(position)
+                        }
+                    }
+                }
             }
             .navigationTitle("Novo Jogador")
             .navigationBarTitleDisplayMode(.inline)
@@ -219,7 +228,7 @@ struct GroupDetailView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Adicionar") {
-                        viewModel?.addPlayer(name: newPlayerName, gender: newPlayerGender, skillLevel: newPlayerSkill, to: group)
+                        viewModel?.addPlayer(name: newPlayerName, gender: newPlayerGender, skillLevel: newPlayerSkill, position: newPlayerPosition, to: group)
                         resetAddPlayerForm()
                         showingAddPlayer = false
                     }
@@ -234,6 +243,7 @@ struct GroupDetailView: View {
         newPlayerName = ""
         newPlayerGender = .male
         newPlayerSkill = .beginner
+        newPlayerPosition = .utility
     }
 
     // MARK: - Generate Teams Sheet
@@ -256,9 +266,16 @@ struct GroupDetailView: View {
                     Text("Sem regra de mínimo de mulheres — sorteio só por habilidade")
                         .foregroundColor(.gray)
                 }
+                if selectedCount < (viewModel?.numberOfTeams ?? 2) {
+                    Text("Jogadores confirmados insuficientes pra esse número de times")
+                        .foregroundColor(.orange)
+                }
             }
             .navigationTitle("Gerar Times")
             .navigationBarTitleDisplayMode(.inline)
+            .onChange(of: selectedCount) {
+                viewModel?.clampNumberOfTeams(selectedCount: selectedCount)
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancelar") { showingGenerateSheet = false }
@@ -269,7 +286,7 @@ struct GroupDetailView: View {
                         showingGenerateSheet = false
                         showingTeamsResult = true
                     }
-                    .disabled(selectedCount == 0)
+                    .disabled(!(viewModel?.canGenerateTeams(selectedCount: selectedCount) ?? false))
                 }
             }
         }
