@@ -251,6 +251,19 @@ struct GroupDetailView: View {
     private var generateTeamsSheet: some View {
         NavigationStack {
             Form {
+                Picker(
+                    "Modo",
+                    selection: Binding(
+                        get: { viewModel?.generationMode ?? .balanced },
+                        set: { viewModel?.generationMode = $0 }
+                    )
+                ) {
+                    ForEach(TeamGenerationMode.allCases, id: \.self) { mode in
+                        Text(mode.label).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+
                 Stepper(
                     "Número de times: \(viewModel?.numberOfTeams ?? 2)",
                     value: Binding(
@@ -263,8 +276,12 @@ struct GroupDetailView: View {
                     Text("Mínimo de mulheres por time: \(group.minWomenPerTeam)")
                         .foregroundColor(.gray)
                 } else {
-                    Text("Sem regra de mínimo de mulheres — sorteio só por habilidade")
-                        .foregroundColor(.gray)
+                    Text(
+                        viewModel?.generationMode == .random
+                            ? "Sem regra de mínimo de mulheres — sorteio totalmente aleatório"
+                            : "Sem regra de mínimo de mulheres — sorteio só por habilidade"
+                    )
+                    .foregroundColor(.gray)
                 }
                 if selectedCount < (viewModel?.numberOfTeams ?? 2) {
                     Text("Jogadores confirmados insuficientes pra esse número de times")

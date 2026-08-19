@@ -12,6 +12,18 @@ struct TeamGenerationResult {
     var insufficientWomen: Bool
 }
 
+enum TeamGenerationMode: String, CaseIterable {
+    case balanced
+    case random
+
+    var label: String {
+        switch self {
+        case .balanced: return "Equilibrado"
+        case .random: return "Aleatório"
+        }
+    }
+}
+
 enum TeamGeneratorService {
     /// Nomes cosméticos sorteados pros badges dos times — puramente visual, sem efeito no
     /// balanceamento.
@@ -36,10 +48,16 @@ enum TeamGeneratorService {
     /// em carência, trocas empatadas em quanto melhoram o equilíbrio), sorteia entre elas
     /// em vez de sempre pegar a primeira — senão a mesma entrada gera sempre exatamente o
     /// mesmo resultado, o que não parece um sorteio de verdade.
+    ///
+    /// Em `.random`, pula o balanceamento por skill inteiramente (sem ordenar por skill,
+    /// sem o refinamento de troca) — só distribui pra manter os times do mesmo tamanho. O
+    /// mínimo de mulheres por time continua respeitado nos dois modos, já que é uma regra
+    /// de composição do time, não de nível.
     static func generateTeams(
         from players: [Player],
         numberOfTeams: Int,
-        minWomenPerTeam: Int
+        minWomenPerTeam: Int,
+        mode: TeamGenerationMode = .balanced
     ) -> TeamGenerationResult {
         guard numberOfTeams >= 1 else {
             return TeamGenerationResult(teams: [], insufficientWomen: false)
@@ -50,36 +68,60 @@ enum TeamGeneratorService {
         let mustRespectGender: Bool
 
         if minWomenPerTeam > 0 {
-            let females = selectedPlayers
-                .filter { $0.gender == .female }
-                .shuffled()
-                .sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
+            let females = orderedByMode(selectedPlayers.filter { $0.gender == .female }, mode: mode)
             let males = selectedPlayers.filter { $0.gender == .male }
 
             let reservedCount = min(females.count, numberOfTeams * minWomenPerTeam)
             let reservedWomen = Array(females.prefix(reservedCount))
             let remainingWomen = Array(females.suffix(from: reservedCount))
 
-            greedyDistribute(reservedWomen, into: &teams)
+            distribute(reservedWomen, into: &teams, mode: mode)
 
-            let remainderPool = (remainingWomen + males)
-                .shuffled()
-                .sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
-            greedyDistribute(remainderPool, into: &teams)
+            let remainderPool = orderedByMode(remainingWomen + males, mode: mode)
+            distribute(remainderPool, into: &teams, mode: mode)
 
             mustRespectGender = true
         } else {
-            let pool = selectedPlayers.shuffled().sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
-            greedyDistribute(pool, into: &teams)
+            let pool = orderedByMode(selectedPlayers, mode: mode)
+            distribute(pool, into: &teams, mode: mode)
             mustRespectGender = false
         }
 
-        refineBalance(&teams, respectGender: mustRespectGender)
+        if mode == .balanced {
+            refineBalance(&teams, respectGender: mustRespectGender)
+        }
         assignBadgeNames(&teams)
 
         let femaleCount = selectedPlayers.filter { $0.gender == .female }.count
         let insufficientWomen = minWomenPerTeam > 0 && femaleCount < numberOfTeams * minWomenPerTeam
         return TeamGenerationResult(teams: teams, insufficientWomen: insufficientWomen)
+    }
+
+    private static func orderedByMode(_ pool: [Player], mode: TeamGenerationMode) -> [Player] {
+        switch mode {
+        case .balanced: return pool.shuffled().sorted { $0.skillLevel.rawValue > $1.skillLevel.rawValue }
+        case .random: return pool.shuffled()
+        }
+    }
+
+    private static func distribute(_ pool: [Player], into teams: inout [Team], mode: TeamGenerationMode) {
+        switch mode {
+        case .balanced: greedyDistribute(pool, into: &teams)
+        case .random: evenDistribute(pool, into: &teams)
+        }
+    }
+
+    /// Distribui `pool` só pra manter os times do mesmo tamanho, ignorando skill — usado
+    /// no modo `.random`.
+    private static func evenDistribute(_ pool: [Player], into teams: inout [Team]) {
+        guard !pool.isEmpty, !teams.isEmpty else { return }
+
+        for player in pool {
+            let minCount = teams.map(\.players.count).min()!
+            let candidates = teams.indices.filter { teams[$0].players.count == minCount }
+            let targetIndex = candidates.randomElement()!
+            teams[targetIndex].players.append(player)
+        }
     }
 
     /// Distribui `pool` (já ordenado por prioridade) entre os `teams`: a cada jogador,

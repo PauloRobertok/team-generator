@@ -156,4 +156,33 @@ struct TeamGeneratorServiceTests {
 
         #expect(signatures.count > 1)
     }
+
+    @Test func randomModeStillRespectsWomenMinimum() {
+        let players = [
+            Player(name: "F1", gender: .female, skillLevel: .pro),
+            Player(name: "F2", gender: .female, skillLevel: .beginner),
+            Player(name: "M1", gender: .male, skillLevel: .pro),
+            Player(name: "M2", gender: .male, skillLevel: .pro),
+            Player(name: "M3", gender: .male, skillLevel: .beginner),
+            Player(name: "M4", gender: .male, skillLevel: .beginner)
+        ]
+        let result = TeamGeneratorService.generateTeams(
+            from: players, numberOfTeams: 2, minWomenPerTeam: 1, mode: .random
+        )
+
+        // O modo aleatório abre mão do equilíbrio por skill, mas o mínimo de mulheres por
+        // time é uma regra de composição, não de nível — continua valendo nos dois modos.
+        #expect(result.teams[0].femaleCount == 1)
+        #expect(result.teams[1].femaleCount == 1)
+    }
+
+    @Test func randomModeKeepsTeamsEvenlySized() {
+        let players = (1...9).map { Player(name: "P\($0)", gender: .male, skillLevel: .beginner) }
+        let result = TeamGeneratorService.generateTeams(
+            from: players, numberOfTeams: 3, minWomenPerTeam: 0, mode: .random
+        )
+
+        let counts = result.teams.map { $0.players.count }.sorted()
+        #expect(counts == [3, 3, 3])
+    }
 }

@@ -12,6 +12,7 @@ import SwiftData
 @MainActor
 final class GroupDetailViewModel {
     var numberOfTeams: Int = 2
+    var generationMode: TeamGenerationMode = .balanced
     var generatedTeams: [Team] = []
     var insufficientWomen: Bool = false
 
@@ -61,7 +62,8 @@ final class GroupDetailViewModel {
         let result = TeamGeneratorService.generateTeams(
             from: group.players,
             numberOfTeams: numberOfTeams,
-            minWomenPerTeam: group.minWomenPerTeam
+            minWomenPerTeam: group.minWomenPerTeam,
+            mode: generationMode
         )
         generatedTeams = result.teams
         insufficientWomen = result.insufficientWomen
