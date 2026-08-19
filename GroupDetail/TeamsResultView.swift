@@ -13,6 +13,7 @@ struct TeamsResultView: View {
     let viewModel: GroupDetailViewModel
 
     @Environment(\.dismiss) private var dismiss
+    @State private var showingLiveMatch = false
 
     private var teams: [Team] { viewModel.generatedTeams }
 
@@ -50,6 +51,9 @@ struct TeamsResultView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Fechar") { dismiss() }
                 }
+            }
+            .fullScreenCover(isPresented: $showingLiveMatch) {
+                LiveMatchView(group: group, teams: teams)
             }
         }
     }
@@ -168,11 +172,13 @@ struct TeamsResultView: View {
     // MARK: - Footer
 
     private var footerButtons: some View {
-        HStack(spacing: 12) {
-            ShareLink(item: shareText) {
+        VStack(spacing: 10) {
+            Button {
+                showingLiveMatch = true
+            } label: {
                 HStack {
-                    Image(systemName: "square.and.arrow.up")
-                    Text("Compartilhar Times")
+                    Image(systemName: "sportscourt.fill")
+                    Text("Iniciar Confrontos")
                 }
                 .font(.system(size: 15, weight: .semibold))
                 .frame(maxWidth: .infinity)
@@ -182,19 +188,34 @@ struct TeamsResultView: View {
                 .cornerRadius(12)
             }
 
-            Button {
-                viewModel.generateTeams(for: group)
-            } label: {
-                HStack {
-                    Image(systemName: "arrow.clockwise")
-                    Text("Sortear")
+            HStack(spacing: 12) {
+                ShareLink(item: shareText) {
+                    HStack {
+                        Image(systemName: "square.and.arrow.up")
+                        Text("Compartilhar")
+                    }
+                    .font(.system(size: 14, weight: .medium))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(Color.gray.opacity(0.15))
+                    .foregroundColor(.primary)
+                    .cornerRadius(12)
                 }
-                .font(.system(size: 15, weight: .semibold))
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.gray.opacity(0.15))
-                .foregroundColor(.primary)
-                .cornerRadius(12)
+
+                Button {
+                    viewModel.generateTeams(for: group)
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.clockwise")
+                        Text("Sortear")
+                    }
+                    .font(.system(size: 14, weight: .medium))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(Color.gray.opacity(0.15))
+                    .foregroundColor(.primary)
+                    .cornerRadius(12)
+                }
             }
         }
         .padding()
