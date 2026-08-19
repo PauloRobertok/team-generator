@@ -9,17 +9,24 @@ import SwiftUI
 
 struct AppHeaderView: View {
     var body: some View {
-        HStack {
+        HStack(spacing: 8) {
             Image(.teamDraftIcon)
-                .font(.title)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 24, height: 24)
 
-            Text("Drafter")
+            Text("TeamDraft")
+                .font(.system(size: 17, weight: .bold))
                 .foregroundStyle(.blue)
-                .fontWeight(.bold)
+
             Spacer()
         }
-        .padding()
-        .background(Color(.systemGray6))
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(Color(.systemBackground))
+        .overlay(alignment: .bottom) {
+            Divider()
+        }
     }
 }
 
