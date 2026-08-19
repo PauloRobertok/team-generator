@@ -10,9 +10,24 @@ import SwiftData
 
 @main
 struct teamgeneratorApp: App {
+    @State private var showingSplash = true
+
     var body: some Scene {
         WindowGroup {
-            RootTabView()
+            ZStack {
+                RootTabView()
+
+                if showingSplash {
+                    SplashScreenView()
+                        .transition(.opacity)
+                }
+            }
+            .task {
+                try? await Task.sleep(for: .seconds(1.5))
+                withAnimation {
+                    showingSplash = false
+                }
+            }
         }
         .modelContainer(for: [GroupGame.self, Player.self, GameSession.self])
     }
