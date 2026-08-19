@@ -50,6 +50,27 @@ enum PlayerPosition: String, Codable, CaseIterable {
     }
 }
 
+enum MatchRotationRule: String, Codable, CaseIterable {
+    case sequential = "Sequential"
+    case winStreakExit = "WinStreakExit"
+
+    var label: String {
+        switch self {
+        case .sequential:   return "Sequenciada"
+        case .winStreakExit: return "2 vitórias e sai"
+        }
+    }
+
+    var explanation: String {
+        switch self {
+        case .sequential:
+            return "Quem vence fica na quadra; só o desafiante da fila entra."
+        case .winStreakExit:
+            return "Vencer 2x seguidas tira o time da quadra — ele volta com prioridade na fila, na frente de quem já espera. Só entra em ação em sessões com mais de 3 times; com 3 ou menos, funciona como a sequenciada."
+        }
+    }
+}
+
 enum SportType: String, Codable, CaseIterable {
     case volleyball = "Volleyball"
     case futsal     = "Futsal"

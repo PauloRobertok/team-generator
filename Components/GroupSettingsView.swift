@@ -48,6 +48,20 @@ struct GroupSettingsView: View {
                 }
 
                 Section {
+                    Picker("Regra de confronto", selection: $group.matchRotationRule) {
+                        ForEach(MatchRotationRule.allCases, id: \.self) { rule in
+                            Text(rule.label).tag(rule)
+                        }
+                    }
+                    .pickerStyle(.inline)
+                    .labelsHidden()
+                } header: {
+                    Text("Confronto ao Vivo")
+                } footer: {
+                    Text(group.matchRotationRule.explanation)
+                }
+
+                Section {
                     Button("Excluir Grupo", role: .destructive) {
                         showingDeleteConfirmation = true
                     }
