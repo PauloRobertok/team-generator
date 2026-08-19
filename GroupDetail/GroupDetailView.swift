@@ -76,6 +76,12 @@ struct GroupDetailView: View {
             if viewModel == nil {
                 viewModel = GroupDetailViewModel(modelContext: modelContext)
             }
+            // Reatribui o array logo ao abrir o grupo — num GroupGame recém-navegado (não
+            // criado/editado nesta sessão), a relação `players` do SwiftData pode ainda não
+            // ter sido "tocada" pelo sistema de observação, e `selectedCount` (baseado em
+            // `player.isSelected`) fica preso num valor desatualizado até algo mais escrever
+            // nela. Mesmo truque usado em addPlayer/deletePlayer.
+            group.players = group.players
         }
         .sheet(isPresented: $showingAddPlayer) {
             addPlayerSheet
