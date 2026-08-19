@@ -14,6 +14,6 @@ struct teamgeneratorApp: App {
         WindowGroup {
             RootTabView()
         }
-        .modelContainer(for: [GroupGame.self, Player.self])
+        .modelContainer(for: [GroupGame.self, Player.self, GameSession.self])
     }
 }

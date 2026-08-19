@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct LiveMatchView: View {
     let group: GroupGame
+    let teams: [Team]
 
     @State private var engine: MatchQueueEngine
     @State private var scoreA = 0
@@ -16,16 +18,23 @@ struct LiveMatchView: View {
     @State private var matchNumber = 1
     @State private var showingScoreConfirm = false
     @State private var showingStopConfirm = false
+    @State private var showingSummary = false
     @State private var resultBanner: String?
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
 
     private static let blue = Color(red: 24.0 / 255, green: 95.0 / 255, blue: 165.0 / 255)
     private static let coral = Color(red: 216.0 / 255, green: 90.0 / 255, blue: 48.0 / 255)
 
     init(group: GroupGame, teams: [Team]) {
         self.group = group
+        self.teams = teams
         _engine = State(initialValue: MatchQueueEngine(teams: teams, rule: group.matchRotationRule))
+    }
+
+    private var anyMatchPlayed: Bool {
+        engine.stats.values.contains { $0.matchesPlayed > 0 }
     }
 
     var body: some View {
@@ -76,9 +85,24 @@ struct LiveMatchView: View {
                 isPresented: $showingStopConfirm,
                 titleVisibility: .visible
             ) {
-                Button("Encerrar", role: .destructive) { dismiss() }
+                Button("Encerrar", role: .destructive) { stopSession() }
                 Button("Continuar jogando", role: .cancel) {}
             }
+            .sheet(isPresented: $showingSummary) {
+                SessionSummaryView(group: group, teams: teams, stats: engine.stats) {
+                    dismiss()
+                }
+            }
+        }
+    }
+
+    private func stopSession() {
+        if anyMatchPlayed {
+            showingSummary = true
+        } else {
+            let session = GameSession(name: group.name, sport: group.sport, status: .cancelled)
+            modelContext.insert(session)
+            dismiss()
         }
     }
 

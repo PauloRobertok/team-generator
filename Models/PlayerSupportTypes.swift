@@ -71,6 +71,18 @@ enum MatchRotationRule: String, Codable, CaseIterable {
     }
 }
 
+enum SessionStatus: String, Codable, CaseIterable {
+    case completed = "Completed"
+    case cancelled = "Cancelled"
+
+    var label: String {
+        switch self {
+        case .completed: return "Concluída"
+        case .cancelled:  return "Cancelada"
+        }
+    }
+}
+
 enum SportType: String, Codable, CaseIterable {
     case volleyball = "Volleyball"
     case futsal     = "Futsal"
