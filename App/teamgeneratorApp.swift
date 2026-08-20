@@ -11,6 +11,7 @@ import SwiftData
 @main
 struct teamgeneratorApp: App {
     @State private var showingSplash = true
+    @AppStorage("appearanceMode") private var appearanceModeRaw = AppearanceMode.light.rawValue
 
     var body: some Scene {
         WindowGroup {
@@ -28,6 +29,7 @@ struct teamgeneratorApp: App {
                     showingSplash = false
                 }
             }
+            .preferredColorScheme((AppearanceMode(rawValue: appearanceModeRaw) ?? .light).colorScheme)
         }
         .modelContainer(for: [GroupGame.self, Player.self, GameSession.self])
     }

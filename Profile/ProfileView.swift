@@ -102,6 +102,13 @@ struct ProfileView: View {
 
             VStack(spacing: 0) {
                 NavigationLink {
+                    AppearanceSettingsView()
+                } label: {
+                    settingsRow(icon: "circle.righthalf.filled", title: "Aparência")
+                }
+                Divider().padding(.leading, 52)
+
+                NavigationLink {
                     NotificationsSettingsView()
                 } label: {
                     settingsRow(icon: "bell", title: "Notificações")
