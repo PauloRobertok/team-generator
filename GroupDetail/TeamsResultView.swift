@@ -70,6 +70,8 @@ struct TeamsResultView: View {
                 .font(.system(size: 14))
                 .foregroundColor(.white.opacity(0.9))
 
+            modeBadge
+
             if group.minWomenPerTeam > 0 {
                 ruleBadge
             }
@@ -87,6 +89,20 @@ struct TeamsResultView: View {
         )
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .padding(.horizontal)
+    }
+
+    private var modeBadge: some View {
+        HStack(spacing: 6) {
+            Image(systemName: viewModel.generationMode == .balanced ? "scalemass.fill" : "shuffle")
+                .font(.system(size: 12))
+            Text("Modo: \(viewModel.generationMode.label)")
+                .font(.system(size: 12, weight: .medium))
+        }
+        .foregroundColor(.white)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .background(Color.white.opacity(0.2))
+        .clipShape(Capsule())
     }
 
     private var ruleBadge: some View {
