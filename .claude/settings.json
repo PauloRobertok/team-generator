@@ -1,0 +1,31 @@
+{
+  "autoMode": {
+    "environment": [
+      "$defaults",
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: assume private unless the remote host and repo name indicate otherwise, or a visibility check in the transcript shows public — repo `PauloRobertok/team-generator` visibility was not queryable here, so treat as private by default (personal-portfolio repo, no org)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: main (default, stable) and development (active work); protected branches/rulesets not queryable here — no gh confirmation available, treat main as the branch to protect via workflow convention (feature branches merge --ff-only into development, development promotes to main periodically)",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Source control**: github.com/PauloRobertok/team-generator (origin) — the trusted repo and its remote only, no additional orgs configured",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: None configured",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: any file or store holding personal data, confidential business data, credentials, regulated data, or similarly sensitive material; preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar; repo .gitignore flags *.env, .env.*, Secrets/, secrets/, and one unusual redacted pattern as sensitive-looking locations local to this repo",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries prod or production as a whole word or name segment (hyphen/underscore/dot-delimited — e.g. matches prod-db, not producer)",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries prod or production as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: iOS app development (Swift/SwiftUI/SwiftData) on the team-generator (Drafter/TeamDraft) portfolio project — build/test via xcodebuild and xcrun predominate in this project's usage",
+      "**Trusted repo**: /Users/pauloroberto/Downloads/Developer-IOS/team-generator and its remote github.com/PauloRobertok/team-generator (origin) — visibility not confirmed via gh, treat as private by default per the Repository visibility entry above",
+      "**Org-specific CLIs**: None configured — xcodebuild, xcrun, xcode-select, defaults, mas_installed, softwareupdate are standard macOS/iOS toolchain, not org-specific",
+      "No routine under <user>/ prefix qualifiers found"
+    ]
+  }
+}
