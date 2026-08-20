@@ -12,6 +12,7 @@ struct SessionSummaryView: View {
     let group: GroupGame
     let teams: [Team]
     let stats: [UUID: MatchQueueEngine.TeamStats]
+    let matchLog: [MatchQueueEngine.MatchRecord]
     var onFinish: () -> Void
 
     @Environment(\.modelContext) private var modelContext
@@ -111,14 +112,16 @@ struct SessionSummaryView: View {
                 badgeName: team.badgeName,
                 matchesPlayed: stats[team.id]?.matchesPlayed ?? 0,
                 matchesWon: stats[team.id]?.matchesWon ?? 0,
-                totalPoints: stats[team.id]?.totalPoints ?? 0
+                totalPoints: stats[team.id]?.totalPoints ?? 0,
+                playerNames: team.players.map(\.name)
             )
         }
         let session = GameSession(
             name: group.name,
             sport: group.sport,
             status: .completed,
-            teamResults: results
+            teamResults: results,
+            matchLog: matchLog
         )
         modelContext.insert(session)
     }
@@ -136,6 +139,7 @@ struct SessionSummaryView: View {
             teams[0].id: MatchQueueEngine.TeamStats(matchesPlayed: 3, matchesWon: 2, totalPoints: 47),
             teams[1].id: MatchQueueEngine.TeamStats(matchesPlayed: 2, matchesWon: 1, totalPoints: 31)
         ],
+        matchLog: [],
         onFinish: {}
     )
     .modelContainer(PreviewContainer.sample)

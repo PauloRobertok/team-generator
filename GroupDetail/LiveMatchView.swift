@@ -74,7 +74,7 @@ struct LiveMatchView: View {
                 Button("Continuar jogando", role: .cancel) {}
             }
             .sheet(isPresented: $showingSummary) {
-                SessionSummaryView(group: group, teams: teams, stats: engine.stats) {
+                SessionSummaryView(group: group, teams: teams, stats: engine.stats, matchLog: engine.matchLog) {
                     dismiss()
                 }
             }
@@ -117,6 +117,10 @@ struct LiveMatchView: View {
                             .background(Color.blue.opacity(0.1))
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                             .padding(.horizontal)
+                    }
+
+                    if anyMatchPlayed {
+                        standingsCard
                     }
                 }
                 .padding(.vertical, 16)
@@ -180,6 +184,55 @@ struct LiveMatchView: View {
                 .background(Color.white.opacity(0.18))
                 .clipShape(Circle())
         }
+    }
+
+    // MARK: - Standings
+
+    /// Classificação ao vivo — pra galera acompanhar quem tá ganhando enquanto a sessão
+    /// continua, em vez de só descobrir no resumo final. Só aparece depois do primeiro
+    /// confronto (antes disso, todo mundo tá empatado em 0, não ajuda em nada mostrar).
+    private var standingsCard: some View {
+        let ranked = teams
+            .map { ($0, engine.stats[$0.id] ?? MatchQueueEngine.TeamStats()) }
+            .sorted { lhs, rhs in
+                if lhs.1.matchesWon != rhs.1.matchesWon { return lhs.1.matchesWon > rhs.1.matchesWon }
+                return lhs.1.totalPoints > rhs.1.totalPoints
+            }
+
+        return VStack(alignment: .leading, spacing: 8) {
+            Text("Classificação")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundColor(.gray)
+                .padding(.horizontal, 4)
+
+            VStack(spacing: 0) {
+                ForEach(Array(ranked.enumerated()), id: \.element.0.id) { index, entry in
+                    if index > 0 {
+                        Divider()
+                    }
+                    HStack {
+                        Text("\(index + 1)")
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(.gray)
+                            .frame(width: 18)
+                        Text(entry.0.name)
+                            .font(.system(size: 14, weight: index == 0 ? .bold : .regular))
+                        Spacer()
+                        Text("\(entry.1.matchesWon) vit.")
+                            .font(.system(size: 12))
+                            .foregroundColor(.gray)
+                        Text("\(entry.1.totalPoints) pts")
+                            .font(.system(size: 13, weight: .semibold))
+                            .frame(width: 64, alignment: .trailing)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                }
+            }
+            .background(Color(.systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+        .padding(.horizontal)
     }
 
     // MARK: - Queue

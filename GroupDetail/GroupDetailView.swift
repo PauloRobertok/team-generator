@@ -19,6 +19,7 @@ struct GroupDetailView: View {
     @State private var showingGenerateSheet = false
     @State private var showingTeamsResult = false
     @State private var showingSettings = false
+    @State private var editingPlayer: Player?
 
     private var selectedCount: Int {
         group.players.filter { $0.isSelected }.count
@@ -101,6 +102,9 @@ struct GroupDetailView: View {
                 dismiss()
             }
         }
+        .sheet(item: $editingPlayer) { player in
+            EditPlayerSheet(player: player)
+        }
     }
 
     // MARK: - Header
@@ -175,7 +179,7 @@ struct GroupDetailView: View {
                 ForEach(group.players) { player in
                     PlayerDetailRowView(
                         player: player,
-                        onEdit: {},
+                        onEdit: { editingPlayer = player },
                         onDelete: {
                             viewModel?.deletePlayer(player)
                         }
@@ -217,7 +221,7 @@ struct GroupDetailView: View {
                 }
                 Section("Posição") {
                     Picker("Posição", selection: $newPlayerPosition) {
-                        ForEach(PlayerPosition.allCases, id: \.self) { position in
+                        ForEach(PlayerPosition.options(for: group.sport), id: \.self) { position in
                             Text(position.label).tag(position)
                         }
                     }

@@ -30,6 +30,17 @@ struct MatchQueueEngine {
         let winnerExited: Bool
     }
 
+    /// Retrato de um confronto já decidido — pra guardar no histórico depois, já que o
+    /// motor em si (e `stats`) só mantém o total agregado.
+    struct MatchRecord: Codable, Identifiable {
+        var id = UUID()
+        var teamAName: String
+        var teamBName: String
+        var scoreA: Int
+        var scoreB: Int
+        var winnerName: String
+    }
+
     enum RecordError: Error {
         case tie
     }
@@ -37,6 +48,7 @@ struct MatchQueueEngine {
     private(set) var court: (teamA: Team, teamB: Team)
     private(set) var queue: [Team]
     private(set) var stats: [UUID: TeamStats]
+    private(set) var matchLog: [MatchRecord] = []
 
     private var streaks: [UUID: Int] = [:]
     private let rule: MatchRotationRule
@@ -65,6 +77,14 @@ struct MatchQueueEngine {
         stats[winner.id, default: TeamStats()].totalPoints += winnerScore
         stats[loser.id, default: TeamStats()].matchesPlayed += 1
         stats[loser.id, default: TeamStats()].totalPoints += loserScore
+
+        matchLog.append(MatchRecord(
+            teamAName: court.teamA.name,
+            teamBName: court.teamB.name,
+            scoreA: scoreA,
+            scoreB: scoreB,
+            winnerName: winner.name
+        ))
 
         streaks[loser.id] = 0
         queue.append(loser)

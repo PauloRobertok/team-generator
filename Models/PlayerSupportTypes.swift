@@ -37,15 +37,44 @@ enum PlayerPosition: String, Codable, CaseIterable {
     case blocker = "Blocker"
     case server = "Server"
     case utility = "Utility"
+    case pointGuard = "PointGuard"
+    case shootingGuard = "ShootingGuard"
+    case smallForward = "SmallForward"
+    case powerForward = "PowerForward"
+    case center = "Center"
+    case goalkeeper = "Goalkeeper"
+    case attacker = "Attacker"
+    case defender = "Defender"
+    case midfielder = "Midfielder"
 
     var label: String {
         switch self {
-        case .setter:  return "Levantador"
-        case .libero:  return "Líbero"
-        case .spiker:  return "Ponteiro"
-        case .blocker: return "Bloqueador"
-        case .server:  return "Sacador"
-        case .utility: return "Universal"
+        case .setter:        return "Levantador"
+        case .libero:        return "Líbero"
+        case .spiker:        return "Ponteiro"
+        case .blocker:       return "Bloqueador"
+        case .server:        return "Sacador"
+        case .utility:       return "Universal"
+        case .pointGuard:    return "Armador"
+        case .shootingGuard: return "Ala-Armador"
+        case .smallForward:  return "Ala"
+        case .powerForward:  return "Ala-Pivô"
+        case .center:        return "Pivô"
+        case .goalkeeper:    return "Goleiro"
+        case .attacker:      return "Ataque"
+        case .defender:      return "Zaga"
+        case .midfielder:    return "Meio-Campista"
+        }
+    }
+
+    /// Cada esporte mostra só as posições que fazem sentido pra ele — o "Personalizado"
+    /// não tem posições reais definidas, então fica só com "Universal".
+    static func options(for sport: SportType) -> [PlayerPosition] {
+        switch sport {
+        case .volleyball: return [.setter, .libero, .spiker, .blocker, .server, .utility]
+        case .basketball: return [.pointGuard, .shootingGuard, .smallForward, .powerForward, .center, .utility]
+        case .futsal:     return [.goalkeeper, .attacker, .defender, .midfielder, .utility]
+        case .custom:     return [.utility]
         }
     }
 }

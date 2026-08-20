@@ -107,4 +107,26 @@ struct MatchQueueEngineTests {
         #expect(team2Stats.matchesWon == 0)
         #expect(team2Stats.totalPoints == 15)
     }
+
+    @Test func recordsMatchLogInOrder() throws {
+        let teams = makeTeams(4)
+        var engine = MatchQueueEngine(teams: teams, rule: .sequential)
+
+        try engine.recordResult(scoreA: 21, scoreB: 15) // Time 1 vence do Time 2
+        try engine.recordResult(scoreA: 18, scoreB: 21) // Time 3 vence do Time 1
+
+        #expect(engine.matchLog.count == 2)
+
+        let first = engine.matchLog[0]
+        #expect(first.teamAName == teams[0].name)
+        #expect(first.teamBName == teams[1].name)
+        #expect(first.scoreA == 21)
+        #expect(first.scoreB == 15)
+        #expect(first.winnerName == teams[0].name)
+
+        let second = engine.matchLog[1]
+        #expect(second.teamAName == teams[0].name)
+        #expect(second.teamBName == teams[2].name)
+        #expect(second.winnerName == teams[2].name)
+    }
 }

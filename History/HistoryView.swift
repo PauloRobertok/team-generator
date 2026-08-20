@@ -9,30 +9,47 @@ import SwiftUI
 import SwiftData
 
 struct HistoryView: View {
+    @Environment(\.modelContext) private var modelContext
     @Query(sort: \GameSession.date, order: .reverse) private var sessions: [GameSession]
 
     var body: some View {
         NavigationStack {
-            Group {
+            VStack(spacing: 0) {
+                AppHeaderView()
+
                 if sessions.isEmpty {
                     emptyState
                 } else {
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 16) {
-                            header
-                            VStack(spacing: 12) {
-                                ForEach(sessions) { session in
-                                    sessionCard(session)
-                                }
+                    List {
+                        header
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+
+                        ForEach(sessions) { session in
+                            NavigationLink {
+                                SessionDetailView(session: session)
+                            } label: {
+                                sessionCard(session)
                             }
-                            .padding(.horizontal)
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
                         }
-                        .padding(.vertical)
+                        .onDelete(perform: deleteSessions)
                     }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
                 }
             }
             .background(Color(.systemGroupedBackground))
             .navigationBarHidden(true)
+        }
+    }
+
+    private func deleteSessions(at offsets: IndexSet) {
+        for index in offsets {
+            modelContext.delete(sessions[index])
         }
     }
 
@@ -44,7 +61,6 @@ struct HistoryView: View {
                 .font(.system(size: 14))
                 .foregroundColor(.gray)
         }
-        .padding(.horizontal)
     }
 
     private var emptyState: some View {
@@ -111,6 +127,7 @@ struct HistoryView: View {
                 .fill(Color(.systemBackground))
                 .shadow(color: Color.black.opacity(0.06), radius: 8, x: 0, y: 4)
         )
+        .contentShape(Rectangle())
     }
 
     private func statusBadge(_ status: SessionStatus) -> some View {
