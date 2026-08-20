@@ -130,7 +130,7 @@ enum SportType: String, Codable, CaseIterable {
     var label: String {
         switch self {
         case .volleyball:  return "Vôlei"
-        case .futsal:      return "Futsal"
+        case .futsal:      return "Futebol"
         case .basketball:  return "Basquete"
         case .custom:      return "Personalizado"
         }
