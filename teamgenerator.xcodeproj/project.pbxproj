@@ -67,6 +67,11 @@
 			path = Groups;
 			sourceTree = "<group>";
 		};
+		AC63DCD5FB699883F5385EDA /* Scoreboard */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Scoreboard;
+			sourceTree = "<group>";
+		};
 		E8EE4A93947E67F6C8E09065 /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = App;
@@ -80,11 +85,6 @@
 		FAE44D95BD42893D9992F046 /* Models */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Models;
-			sourceTree = "<group>";
-		};
-		AC63DCD5FB699883F5385EDA /* Scoreboard */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Scoreboard;
 			sourceTree = "<group>";
 		};
 		FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */ = {
@@ -185,10 +185,10 @@
 				5DDA4EB5BE4B578E47FF3BC9 /* Components */,
 				61024164939B63A3E239F9CF /* Profile */,
 				81E14CE7B8D19CE2E377208A /* Groups */,
+				AC63DCD5FB699883F5385EDA /* Scoreboard */,
 				E8EE4A93947E67F6C8E09065 /* App */,
 				F6A843FF95819AD6BBA7D943 /* History */,
 				FAE44D95BD42893D9992F046 /* Models */,
-				AC63DCD5FB699883F5385EDA /* Scoreboard */,
 			);
 			name = teamgenerator;
 			packageProductDependencies = (
