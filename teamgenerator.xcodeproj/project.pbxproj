@@ -82,6 +82,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		AC63DCD5FB699883F5385EDA /* Scoreboard */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Scoreboard;
+			sourceTree = "<group>";
+		};
 		FE7E33C12FAB95ED0063F699 /* teamgeneratorTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = teamgeneratorTests;
@@ -144,6 +149,7 @@
 				E8EE4A93947E67F6C8E09065 /* App */,
 				F6A843FF95819AD6BBA7D943 /* History */,
 				61024164939B63A3E239F9CF /* Profile */,
+				AC63DCD5FB699883F5385EDA /* Scoreboard */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +188,7 @@
 				E8EE4A93947E67F6C8E09065 /* App */,
 				F6A843FF95819AD6BBA7D943 /* History */,
 				FAE44D95BD42893D9992F046 /* Models */,
+				AC63DCD5FB699883F5385EDA /* Scoreboard */,
 			);
 			name = teamgenerator;
 			packageProductDependencies = (
@@ -244,7 +251,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2630;
-				LastUpgradeCheck = 2630;
+				LastUpgradeCheck = 2660;
 				TargetAttributes = {
 					FE7E33B02FAB95EA0063F699 = {
 						CreatedOnToolsVersion = 26.3;
@@ -403,6 +410,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -460,6 +468,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};

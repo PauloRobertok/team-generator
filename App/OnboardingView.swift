@@ -33,6 +33,11 @@ private let onboardingPages: [OnboardingPage] = [
         icon: "sportscourt.fill",
         title: "Acompanhe o jogo ao vivo",
         message: "Registre os confrontos, veja o histórico depois e quem tá invicto na quadra."
+    ),
+    OnboardingPage(
+        icon: "square.split.2x1.fill",
+        title: "Só precisa de um placar?",
+        message: "Na aba Placar você conta pontos na hora, sem grupo nem cadastro — ideal pra um jogo avulso."
     )
 ]
 

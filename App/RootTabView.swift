@@ -16,6 +16,11 @@ struct RootTabView: View {
                     Label("Groups", systemImage: "person.2.fill")
                 }
 
+            ScoreboardView()
+                .tabItem {
+                    Label("Placar", systemImage: "square.split.2x1.fill")
+                }
+
             HistoryView()
                 .tabItem {
                     Label("History", systemImage: "clock.arrow.circlepath")
