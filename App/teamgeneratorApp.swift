@@ -11,12 +11,22 @@ import SwiftData
 @main
 struct teamgeneratorApp: App {
     @State private var showingSplash = true
+    @State private var showingOnboarding = false
     @AppStorage("appearanceMode") private var appearanceModeRaw = AppearanceMode.light.rawValue
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
     var body: some Scene {
         WindowGroup {
             ZStack {
                 RootTabView()
+
+                if showingOnboarding {
+                    OnboardingView {
+                        hasCompletedOnboarding = true
+                        withAnimation { showingOnboarding = false }
+                    }
+                    .transition(.opacity)
+                }
 
                 if showingSplash {
                     SplashScreenView()
@@ -27,6 +37,9 @@ struct teamgeneratorApp: App {
                 try? await Task.sleep(for: .seconds(1.5))
                 withAnimation {
                     showingSplash = false
+                    if !hasCompletedOnboarding {
+                        showingOnboarding = true
+                    }
                 }
             }
             .preferredColorScheme((AppearanceMode(rawValue: appearanceModeRaw) ?? .light).colorScheme)
